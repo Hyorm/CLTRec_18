@@ -8,7 +8,7 @@ src -- cr ------ main
              |           |
              |            --- Clothes.java(Next Iteration --> Feature Manage)
              |
-              -- user ------- User.java
+              -- usr ------- User.java
              |           |
              |            --- Circumstance.java
              |
