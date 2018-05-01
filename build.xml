@@ -1,0 +1,35 @@
+<project name="CLTRec" default="build" basedir=".">
+
+	<property name="src" value="src"/>
+	<property name="build" value="build"/>
+	<property name="lib" value="lib"/> 
+	<property name="doc" value="doc"/> 
+
+	<path id="lib.path">
+		<pathelement location="${build}" />
+		<!--<pathelement location="${lib}/jfreechart-1.0.19.jar" />
+		<pathelement location="${lib}/jcommon-1.0.23.jar" />-->
+	</path>
+
+	<target name="init">
+		<mkdir dir="${build}"/>
+	</target>
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}" debug="true" includeantruntime="false">
+			<classpath refid="lib.path"/>
+		</javac>
+	</target>
+
+	<target name="run" depends="build">
+		<java classname="cr.main.Main" fork="true" dir="." maxmemory="4096m">
+			<!--<arg file="data/gr48.tsp"/>-->
+			<classpath refid="lib.path"/>
+			<classpath location="."/>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+	</target>
+</project>
+
