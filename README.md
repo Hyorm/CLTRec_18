@@ -14,8 +14,6 @@ src -- cr ------ main
              |
               -- algorithm -- Recommender.java
              |            
-             |
-             |
               -- gui
 
 <b>Ant</b>
