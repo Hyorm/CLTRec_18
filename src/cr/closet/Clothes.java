@@ -56,6 +56,9 @@ public class Clothes{
 		if((bin.length()>4)||bin.length()<0)
 			System.out.println("Invalid bin Information");
 	
+		if((bin.length()<4)
+			for(int i = 0; i<4-bin.length(); i++)
+				bin = "0" + bin;
 		return bin;
 	}
 }
