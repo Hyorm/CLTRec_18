@@ -23,6 +23,6 @@ src -- cr ------ main
    2.ant clean
    3.ant doc
 
-<b>AppletViewr</b>
+<b>AppletViewer</b>
    CLTRec.html
 </pre>
