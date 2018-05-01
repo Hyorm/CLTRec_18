@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Closet{
 
-	private Map<int, Clothes> closet = new Map<int, Clothes>();
+	private Map<Integer, Clothes> closet = new HashMap<Integer, Clothes>();
 	
 	public Closet(){}
 
@@ -17,16 +17,16 @@ public class Closet{
 	
 	public void getClothesMap(){
 		
-		Set<String> keySet = closet.keySet();
+		Set<Integer> keySet = closet.keySet();
 
-		Iterator<String> iterator = keySet.iterator();
+		Iterator<Integer> iterator = keySet.iterator();
 
 		while(iterator.hasNext()) {
  
-			int key = iterator.next();
+			Integer key = iterator.next();
 			Clothes value = closet.get(key);
 
-			System.out.printf("productId : %s , ClothesFeature : %d %n", key, value.getFeature());
+			System.out.printf("productId : %d , ClothesFeature : %d %n", key, value.getFeature());
 		}
 
 		//TODO:return
@@ -49,7 +49,7 @@ public class Closet{
 
 	}
 
-	@overload
+	//@Overload
 	public void rmClothes(Clothes clothes){
 	
 		this.closet.remove(clothes.getProductId());

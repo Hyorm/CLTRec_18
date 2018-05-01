@@ -23,7 +23,7 @@ public class Clothes{
 		this.feature = this.feature + tenToBin(season);
 		this.feature = this.feature + tenToBin(style);
 
-		if((feature.length()>24)||bin.length()<0)
+		if((feature.length()>24)||feature.length()<0)
                         System.out.println("Invalid Feature Information");
 	}
 
