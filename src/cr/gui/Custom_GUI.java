@@ -55,13 +55,13 @@ public class Custom_GUI extends JFrame
      }
 	public void register()
 	{
-		//제목 설정
+		//set name
 		//super("Custom_Closet");
 		
-		//레이아웃 설정
+		//set Layout
 		this.setLayout(new FlowLayout());
 		
-		//버튼 추가
+		//add button
 		//this.add(b2);
 		//this.add(b3);
 		//this.add(buttonStart);
@@ -75,13 +75,13 @@ public class Custom_GUI extends JFrame
 		this.add(checkType4);
 		this.add(b1);
 		
-		//프레임 크기 지정
+		//set frame size
 		this.setSize(400, 400);
 		
-		//프레임 보이도록 설정
+		//set visible
 		this.setVisible(true);
 		
-		//X버튼 눌렀을 때 닫히도록 설정
+		//
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -96,18 +96,18 @@ public class Custom_GUI extends JFrame
 		this.add(textPwd);
 		this.add(b2);
 		
-		//프레임 크기 지정
+		//
 		this.setSize(500, 400);
 				
-		//프레임 보이도록 설정
+		//
 		this.setVisible(true);
 				
-		//X버튼 눌렀을 때 닫히도록 설정
+		//
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public static void main(String[] args)
 	{
-		//실행
+		//
 		new Custom_GUI();
 		//Custom_GUI gui = new Custom_GUI();
 	    //gui.register();
