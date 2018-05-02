@@ -16,16 +16,16 @@ public class ReadFile{
 
 		String line;
 
-		int i = 0;
+		int i = 1;
 
 		while((line = br.readLine()) != null){	
 		
-			if(i>=1)	
-				sb.append(line);
+			sb.append(line + "%%");
+
 			i++;
 
 		}
-		
+		sb.insert(0, String.valueOf(i)+"%%");
 		return sb.toString();
 
 	}
