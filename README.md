@@ -9,6 +9,8 @@ src -- cr ------ main ------- Main.java
              |            --- LogOn.java
              |           |
              |            --- Register.java
+             |           |
+             |            --- Parser.java
              |
               -- closet ----- Closet.java(MyCloset.java + RecCloset.java)
              |           |
