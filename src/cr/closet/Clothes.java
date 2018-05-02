@@ -15,7 +15,10 @@ public class Clothes{
 
 	}
 
-	public Clothes(int productId, int type, int category, int gender, int color, int season, int style){
+	public Clothes(int productId, int type, int category, int gender, int color, int season, int style, int targetAge){
+		this.productId = productId;
+		this.targetAge = targetAge;
+
 		this.feature = this.feature + tenToBin(type);
 		this.feature = this.feature + tenToBin(category);
 		this.feature = this.feature + tenToBin(gender);
@@ -30,6 +33,8 @@ public class Clothes{
 	private String feature = "";
 
 	private int productId;
+
+	private int targetAge;//1010 || 1020 || etc
 
 	public String getFeature(){
 
