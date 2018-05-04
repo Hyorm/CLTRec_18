@@ -1,0 +1,5 @@
+userId,userPW,userName,userType,`userAge
+root,root1234,root,sysAdmin,1
+happy,noSad,happy,user,22
+unHappy,sad,unHappy,user,30
+unHappy,sad,unHappy,user,30
