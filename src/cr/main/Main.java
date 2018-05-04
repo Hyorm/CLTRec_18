@@ -1,3 +1,14 @@
+/**
+*
+*@author KimHyoRim
+*
+*@since 2018.05.04
+*
+*This is main class
+*Manage entire system
+*
+*/
+
 package cr.main;
 
 import cr.gui.*;
@@ -11,9 +22,25 @@ public class Main{
 
 	public static void main(String[] args){
 
-	//TODO: entire system manage point
-	
-	//new CustomFrame().size(2000, 1500).start();
+		boolean isUser = true;
+
+		int userAttNum = 5; 
+
+		String[] user = new String[userAttNum];
+		while(isUser){
+		//TODO: Input UserId from GUI and iterate regUsers
+
+		//change input UserId
+		user = LogOn.logOn("happy");
+		for(int i = 0; i<userAttNum; i++)
+			System.out.println(user[i]+" ");
+		if(!user[0].equals("nil"))isUser = false;
+
+		break;
+		//TODO: If usr input another function, then try something
+
+		}
+		//new CustomFrame().size(2000, 1500).start();
 
 	}
 

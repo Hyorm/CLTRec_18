@@ -4,22 +4,18 @@ import java.util.*;
 import java.awt.*;
 
 public class Parser{
-	Static String[][] matrix;
+	public static String[][] matrix;
 
-	public static String[][] makeMatrix(String str, int num){
+	public static String[][] makeMatrix(String str, int usrNum,int num){
 
 		String[] substr = str.split("%%");
 
-		matrix = new String[Integer.parseInt(substr[0])][num];
+		matrix = new String[usrNum][num];
 
 		int row = 0;
 
-		int first = 0;
-
 		for(String sub: substr){
-
-			if(first++==0)continue;
-			
+	
 			try{
 
 				row++;
@@ -52,18 +48,15 @@ public class Parser{
 		return sub;
 	}
 	
-	public static String[] findThis(String str, int num, String isUser)throws Exception{
-		String[] nil = new String[num];
+	public static String[] findThis(String str, int usrNum, int num, String isUser)throws Exception{
+		String nil[] = {"nil", "", "", "", ""};
 		
-		nil = {"nil", "", "", "", "", ""};
-		
-		makeMatrix(str, num);
+		makeMatrix(str, usrNum, num);
 		
 		for(int i = 0; i < num; i++)
-			if(isUser.equals(matrix[i][0])
+			if(isUser.equals(matrix[i][0]))
 				return matrix[i];
-			else
-				return nil;
+		return nil;
 		
 	}
 }
