@@ -26,6 +26,8 @@ public class ReadFile{
 
 		}
 
+		sb.insert(0, String.valueOf(i)+"%%");
+		
 		return sb.toString();
 
 	}
