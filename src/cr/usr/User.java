@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class User{
 	private String userId;
-	private String userPW;
+	private String userName;
 	private String type;
 	private int age;
 	
@@ -17,11 +17,11 @@ public class User{
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getUserPW() {
-		return userPW;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserPW(String userPW) {
-		this.userPW = userPW;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getType() {
 		return type;
