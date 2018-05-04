@@ -4,12 +4,13 @@ import java.util.*;
 import java.awt.*;
 
 public class Parser{
+	Static String[][] matrix;
 
 	public static String[][] makeMatrix(String str, int num){
 
 		String[] substr = str.split("%%");
 
-		String[][] matrix = new String[Integer.parseInt(substr[0])][num];
+		matrix = new String[Integer.parseInt(substr[0])][num];
 
 		int row = 0;
 
@@ -49,5 +50,20 @@ public class Parser{
 			arr[i] = Object.parseObj(sub[i]);	
 		*/
 		return sub;
+	}
+	
+	public static String[] findThis(String str, int num, String isUser)throws Exception{
+		String[] nil = new String[num];
+		
+		nil = {"nil", "", "", "", "", ""};
+		
+		makeMatrix(str, num);
+		
+		for(int i = 0; i < num; i++)
+			if(isUser.equals(matrix[i][0])
+				return matrix[i];
+			else
+				return nil;
+		
 	}
 }
