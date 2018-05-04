@@ -23,8 +23,7 @@ public class LogOn{
 
 			final int usrNum = Integer.parseInt(s.nextToken("%%"));
 
-                	regUsers = Parser.findThis(str,usrNum,num, "happy");
-
+                	regUsers = Parser.findThis(str,usrNum,num, isUserID);
 
 		}catch (Exception e){
 

@@ -31,17 +31,24 @@ public class Main{
 		//TODO: Input UserId from GUI and iterate regUsers
 
 		//change input UserId
-		user = LogOn.logOn("happy");
+		user = LogOn.logOn("root");
+
+		/*Debug
 		for(int i = 0; i<userAttNum; i++)
 			System.out.println(user[i]+" ");
-		if(!user[0].equals("nil"))isUser = false;
+		*/
 
+
+		if(user[0].equals("nil")){
+			isUser = false;
+			//System.out.println("invalid userId");
+		}
+	
 		break;
 		//TODO: If usr input another function, then try something
 
 		}
 		//new CustomFrame().size(2000, 1500).start();
-
 	}
 
 }
