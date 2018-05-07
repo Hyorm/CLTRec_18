@@ -43,6 +43,7 @@ public class Main{
 			isUser = false;
 			//System.out.println("invalid userId");
 		}
+		new CustomFrame();
 	
 		break;
 		//TODO: If usr input another function, then try something
