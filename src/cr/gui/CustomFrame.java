@@ -1,9 +1,12 @@
 package cr.gui;
 
 import cr.*;
-import oodp.GUI;
-import oodp.GUI.LoginFrame;
-import oodp.GUI.LoginFrame.MyPanel;
+package oodp;
+
+
+import CustomFrame.GUI;
+import CustomFrame.GUI.LoginFrame;
+import CustomFrame.GUI.LoginFrame.MyPanel;
 
 import java.awt.EventQueue;
 
@@ -38,7 +41,7 @@ import javax.swing.JSplitPane;
 import javax.swing.*;
 import java.awt.*;
 
-public class CustomFrame extends JFrame
+public class GUI extends JFrame
 {
 	private JFrame frame;
 	private JTextField textField_1;
@@ -65,10 +68,114 @@ public class CustomFrame extends JFrame
 	public GUI() {
 		initialize();
 	}
+	public class ClosetFrame extends JFrame{
+		BufferedImage Closet_img = null;
+		JTextField typeField;
+		JTextField categoField;
+		JTextField genderField;
+		JTextField CcolorField;
+		JTextField seasonField;
+		JTextField styleField;
+		JButton insert;
+		
+		public ClosetFrame() {
+			setTitle("Closet");
+			setSize(600,1000);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			setVisible(true);
+			
+			setLayout(null);
+			JLayeredPane ClayeredPane = new JLayeredPane();
+			ClayeredPane.setBounds(185,30,600,1000);
+			ClayeredPane.setLayout(null);
+			
+			try {
+				Closet_img = ImageIO.read(new File("C:\\Users\\hyose\\OneDrive\\바탕 화면\\closet.png"));
+			}catch(IOException e) {
+				System.out.println("이미지 불러오기 실패");
+				System.exit(0);
+			}
+			CMyPanel Cpanel = new CMyPanel();
+			Cpanel.setBounds(0,0,600,1000);
+			
+		typeField = new JTextField("TYPE");
+		typeField.setBounds(0,300,240,50);
+		ClayeredPane.add(typeField);
+		typeField.setOpaque(false);
+		typeField.setBackground(Color.white);
+		typeField.setForeground(Color.black);
+		String type = new String(typeField.getText());
+		
+		categoField = new JTextField("CATEGORY");
+		categoField.setBounds(0,370,240,50);
+		categoField.setOpaque(false);
+		categoField.setBackground(Color.white);
+		categoField.setForeground(Color.black);
+		String catego = new String(categoField.getText());
+		ClayeredPane.add(categoField);
+		
+		genderField = new JTextField("GENDER");
+		genderField.setBounds(0,440,240,50);
+		genderField.setOpaque(false);
+		genderField.setBackground(Color.white);
+		genderField.setForeground(Color.black);
+		String gender = new String(genderField.getText());
+		ClayeredPane.add(genderField);
+		
+		CcolorField = new JTextField("COLOR");
+		CcolorField.setBounds(0,510,240,50);
+		CcolorField.setOpaque(false);
+		CcolorField.setBackground(Color.white);
+		CcolorField.setForeground(Color.black);
+		String Ccolor = new String(categoField.getText());
+		ClayeredPane.add(CcolorField);
+		
+		seasonField = new JTextField("SEASON");
+		seasonField.setBounds(0,580,240,50);
+		seasonField.setOpaque(false);
+		seasonField.setBackground(Color.white);
+		seasonField.setForeground(Color.black);
+		String season = new String(categoField.getText());
+		ClayeredPane.add(seasonField);
+		
+		styleField = new JTextField("STYLE");
+		styleField.setBounds(0,650,240,50);
+		styleField.setOpaque(false);
+		styleField.setBackground(Color.white);
+		styleField.setForeground(Color.black);
+		String style = new String(styleField.getText());
+		ClayeredPane.add(styleField);
+		
+		insert = new JButton("Register");
+		insert.setBounds(70,720,104,48);
+		
+		insert.setBackground(Color.lightGray);
+		insert.setFocusPainted(false);
+		insert.setContentAreaFilled(false);
+		
+		ClayeredPane.add(insert);
+		insert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClosetFrame();
+			}
+		});
+		
+		ClayeredPane.add(Cpanel);
+		add(ClayeredPane);
+		setVisible(true);
+	}
+	
+	class CMyPanel extends JPanel{
+		public void paint(Graphics g) {
+			g.drawImage(Closet_img, 0, 0, null);
+		}
+	}
+	}
+	
 	public class LoginFrame extends JFrame{
 		BufferedImage img = null;
 		JTextField loginTextField;
-		JPasswordField passwordField;
+		JTextField passwordField;
 		JButton bt;
 		
 	public LoginFrame() {
@@ -97,20 +204,22 @@ public class CustomFrame extends JFrame
 //		layeredPane.add(loginTitle);
 //		loginTitle.setForeground(Color.black);
 		
-		loginTextField = new JTextField(15);
-		loginTextField.setBounds(0,300,280,50);
+		loginTextField = new JTextField("ID");
+		loginTextField.setBounds(0,300,240,50);
 		layeredPane.add(loginTextField);
 		loginTextField.setOpaque(false);
 		loginTextField.setBackground(Color.white);
 		loginTextField.setForeground(Color.black);
+		String id = new String(loginTextField.getText());
 //		loginTextField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		
-		passwordField = new JPasswordField(15);
-		passwordField.setBounds(0,370,280,50);
+		passwordField = new JPasswordField("PASSWORD");
+		passwordField.setBounds(0,370,240,50);
 		passwordField.setOpaque(false);
 		passwordField.setBackground(Color.white);
 		passwordField.setForeground(Color.black);
 //		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		String pw = new String(passwordField.getText());
 		layeredPane.add(passwordField);
 		
 		bt = new JButton("Login");
@@ -121,8 +230,7 @@ public class CustomFrame extends JFrame
 		bt.setContentAreaFilled(false);
 		
 		layeredPane.add(bt);
-		bt
-		.addActionListener(new ActionListener() {
+		bt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new LoginFrame();
 			}
@@ -170,6 +278,7 @@ public class CustomFrame extends JFrame
 		btnNewButton.setBounds(9, 81, 139, 27);
 		btnNewButton.setFont(new Font("나눔바른고딕", Font.PLAIN, 15));
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton2 = new JButton("WEEKLY BEST");
@@ -177,10 +286,12 @@ public class CustomFrame extends JFrame
 		btnNewButton2.setBounds(9, 111, 139, 27);
 		btnNewButton2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton2.setFont(new Font("나눔바른고딕", Font.PLAIN, 15));
+		btnNewButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel.add(btnNewButton2);
 		
 		JButton btnNewButton3 = new JButton("CLOSET");
 		btnNewButton3.setBackground(Color.WHITE);
+		btnNewButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -192,6 +303,7 @@ public class CustomFrame extends JFrame
 		
 		JButton btnNewButton4 = new JButton("THEME");
 		btnNewButton4.setBackground(Color.WHITE);
+		btnNewButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -204,6 +316,7 @@ public class CustomFrame extends JFrame
 		JButton btnNewButton5 = new JButton("COORDINATOR");
 		btnNewButton5.setBackground(Color.WHITE);
 		btnNewButton5.setBounds(9, 199, 159, 27);
+		btnNewButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton5.setFont(new Font("나눔바른고딕", Font.PLAIN, 15));
 		panel.add(btnNewButton5);
@@ -244,6 +357,11 @@ public class CustomFrame extends JFrame
 		});
 		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\hyose\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\closet.jpg"));
 		btnNewButton_2.setBackground(Color.WHITE);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClosetFrame();
+			}
+		});
 		btnNewButton_2.setBounds(565, 24, 60, 39);
 		frame.getContentPane().add(btnNewButton_2);
 		
