@@ -150,6 +150,7 @@ public class CustomFrame extends JFrame
 		frame.setBackground(Color.WHITE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(0, 0, 700, 700);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(9, 0, 174, 473);
