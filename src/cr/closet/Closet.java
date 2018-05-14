@@ -7,14 +7,17 @@ import java.awt.*;
 
 public class Closet{
 
-	private int closetId;
+	private String closetId = "";
 
 	private Map<Integer, Clothes> closet = new HashMap<Integer, Clothes>();
 	
-	public Closet(){}
-
-	public Closet(Clothes clothes){
-		this.closet.put(clothes.getProductId(), clothes);
+	public Closet(int type, int num){
+		String ty = "";
+		if(type == 0)
+			ty = "r"
+		else ty = "u";
+		
+		this.closetId = ty + num;
 	}
 	
 	public void getClothesMap(){
