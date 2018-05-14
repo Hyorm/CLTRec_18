@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class Closet{
 
+	private int closetId;
+
 	private Map<Integer, Clothes> closet = new HashMap<Integer, Clothes>();
 	
 	public Closet(){}
