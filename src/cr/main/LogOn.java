@@ -7,7 +7,7 @@ import java.util.*;
 
 public class LogOn{
 
-	public static String[] logOn(String isUserID){
+	public static String[] logOn(String isUserID, String isUserPW){
 
 		String str = "";
 
@@ -23,7 +23,8 @@ public class LogOn{
 
 			final int usrNum = Integer.parseInt(s.nextToken("%%"));
 
-                	regUsers = Parser.findThis(str,usrNum,num, isUserID);
+                	regUsers = Parser.findThis(str,usrNum,num, isUserID, isUserPW);
+
 
 		}catch (Exception e){
 

@@ -19,7 +19,6 @@ public class ReadFile{
 		int i = 0;
 
 		while((line = br.readLine()) != null){	
-			if(i!=0)
 				sb.append(line + "%%");
 
 			i++;

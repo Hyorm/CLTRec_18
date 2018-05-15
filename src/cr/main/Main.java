@@ -12,6 +12,7 @@
 package cr.main;
 
 import cr.gui.*;
+import cr.usr.*;
 
 import java.awt.*;
 import java.util.*;
@@ -20,36 +21,106 @@ import javax.swing.*;
 
 public class Main{
 
+		//Singlton User
+		static private User user;
+
+		//FrameLayout
+		static CustomFrame CFrame = new CustomFrame("CLTRec_Beta");
+		static CompositePanel north = new CompositePanel();
+		static CompositePanel west = new CompositePanel();
+		static protected CompositePanel center = new CompositePanel();
+		static protected Container contentPane = new Container();	
+
 	public static void main(String[] args){
 
-		boolean isUser = true;
+		//North MenuBar Component
+		JTextField searchText ;
 
-		int userAttNum = 5; 
+		ImageIcon userProfile;
+		Image userImage;
+		JButton myPage;
 
-		String[] user = new String[userAttNum];
-		while(isUser){
-		//TODO: Input UserId from GUI and iterate regUsers
+		//West MenuBar Comonent
+		ImageIcon logo;
+		Image logoRe;
+		JLabel logoImg;
+		JButton[] menu = new JButton[5];
 
-		//change input UserId
-		user = LogOn.logOn("root");
+		//Set LayOut
+		north = new CompositePanel(0,0,1440,80);
+		west = new CompositePanel(9,1,0,80,200,850);
+               	//CompositePanel center = new CompositePanel(200,80,1240,850);
+                
+		contentPane = CFrame.getContentPane();
 
-		/*Debug
-		for(int i = 0; i<userAttNum; i++)
-			System.out.println(user[i]+" ");
-		*/
+                //North Menu Bar
+                searchText = new JTextField(10);
+
+                //User Page Icon --> Use User Id img
+                userProfile = new ImageIcon("./img/userImage/root.png");
+                userImage = userProfile.getImage();
+                userImage = userImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+                userProfile = new ImageIcon(userImage);
+		
+                myPage = new JButton(userProfile);
+
+                myPage.setContentAreaFilled(false);
+                myPage.setBorderPainted(false);
+                myPage.setFocusPainted(false);
+
+		myPage.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e){
+                		int userAttNum = 5;
+                		String[] userInfo = new String[userAttNum];
+
+				LogGUI logGUI = new LogGUI();
+				
+				userInfo = logGUI.getUserInfo();
+				
+                		if(!userInfo[0].equals("nil")){
+					user = new User(userInfo);
+					//change Pane
+				}
+			}
+		});
+
+                north.adds(searchText, 300, 10, 200, 25);
+                north.adds(myPage, 1200, 10, 30, 30);
+
+                contentPane.add(north);
 
 
-		if(user[0].equals("nil")){
-			isUser = false;
-			//System.out.println("invalid userId");
-		}
-		new CustomFrame();
-	
-		break;
-		//TODO: If usr input another function, then try something
+                //West Menu Bar
 
-		}
-		//new CustomFrame().size(2000, 1500).start();
+                logo = new ImageIcon("./img/logo/hanger.png");
+                logoRe = logo.getImage();
+                logoRe = logoRe.getScaledInstance(200, 100, Image.SCALE_SMOOTH);
+                logo = new ImageIcon(logoRe);
+                logoImg = new JLabel(logo);
+
+                west.adds(logoImg);
+
+                menu = new JButton[5];
+		menu[0] = new JButton("New Clothes");
+                menu[1] = new JButton("Pop Chart");
+                menu[2] = new JButton("Pop Closets");
+                menu[3] = new JButton("Genre Clothes");
+                menu[4] = new JButton("My Closets");
+
+                for(int i = 0; i < 5; i++){
+                        menu[i].setBorderPainted(false);
+                        menu[i].setFocusPainted(false);
+                        west.adds(menu[i]);
+                }
+
+                contentPane.add(west);
+
+                contentPane.add(center);
+
+                CFrame.size(1440,900);
+                CFrame.start();
+
 	}
 
 }

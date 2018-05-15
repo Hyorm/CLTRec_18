@@ -12,6 +12,16 @@ public class User{
 	private int age;
 	
 	public User(){}
+
+	public User(String[] userInfo){
+
+		this.userId = userInfo[0];
+                this.userName = userInfo[2];
+                this.type = userInfo[3];
+                this.age = Integer.parseInt(userInfo[4]);
+
+
+	}
 	
 	public User(String userId, String userName, String type, int age){
 		this.userId = userId;
