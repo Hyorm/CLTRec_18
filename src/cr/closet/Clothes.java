@@ -15,24 +15,26 @@ public class Clothes{
 
 	}
 
-	public Clothes(int productId, int type, int category, int gender, int color, int season, int style, int targetAge){
+	public Clothes(String productId, String type, String category, String gender, String color, String season, String style, String targetAge){
 		this.productId = productId;
 		this.targetAge = targetAge;
-
+		
+		//Codec Invoke
+		/*
 		this.feature = this.feature + tenToBin(type);
 		this.feature = this.feature + tenToBin(category);
 		this.feature = this.feature + tenToBin(gender);
 		this.feature = this.feature + tenToBin(color);
 		this.feature = this.feature + tenToBin(season);
 		this.feature = this.feature + tenToBin(style);
-
+		*/
 		if((feature.length()>24)||feature.length()<0)
                         System.out.println("Invalid Feature Information");
 	}
 
 	private String feature = "";
 
-	private int productId;
+	private String productId;
 
 	private int targetAge;//1010 || 1020 || etc
 
