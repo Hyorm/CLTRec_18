@@ -14,7 +14,7 @@ public class Closet{
 	public Closet(int type, int num){
 		String ty = "";
 		if(type == 0)
-			ty = "r"
+			ty = "r";
 		else ty = "u";
 		
 		this.closetId = ty + num;
