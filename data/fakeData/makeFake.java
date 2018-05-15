@@ -20,7 +20,7 @@ public class makeFake{
 		String[] Style ={"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
 
 		try{		
-			register("ProductID", "Type", "Category", "Gender", "Color", "Season", "Style");
+			register("ProductID","TargetAge", "Type", "Category", "Gender", "Color", "Season", "Style");
 
 			Random rn = new Random();
 	
@@ -31,6 +31,10 @@ public class makeFake{
 				for(int j = 0; j<5-(int)(Math.log10(i)+1); j++)
 					productID += "0";
 				productID = "R"+productID+i;
+
+				int age = rn.nextInt(5)+1;
+				int nextAge = rn.nextInt(3)+age;
+				String targetAge = age+"0"+nextAge+"0";
 				String type = Type[rn.nextInt(4)];
 				String category;
 				if(type.equals("Accessories"))
@@ -46,7 +50,7 @@ public class makeFake{
 				String season = Season[rn.nextInt(4)];
 				String style = Style[rn.nextInt(11)];
 
-				register(productID, type, category, gender, color, season, style);
+				register(productID, targetAge, type, category, gender, color, season, style);
 		
 			}
 		}catch(Exception e){
@@ -56,12 +60,13 @@ public class makeFake{
 	}
 
 
-	public static void register(String productID, String type, String category, String gender, String color, String season, String style) throws IOException{
+	public static void register(String productID, String targetAge, String type, String category, String gender, String color, String season, String style) throws IOException{
 
                 BufferedWriter old = new BufferedWriter(new FileWriter("../data.csv", true));
                 PrintWriter newReg = new PrintWriter(old, true);
 
                 newReg.write(productID+",");
+		newReg.write(targetAge+",");
                 newReg.write(type+",");
                 newReg.write(category+",");
                 newReg.write(gender+",");
