@@ -32,7 +32,7 @@ public class Clothes{
                         System.out.println("Invalid Feature Information");
 	}
 
-	private String feature = "";
+	private int feature;
 
 	private String productId;
 
