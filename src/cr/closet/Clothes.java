@@ -19,6 +19,7 @@ public class Clothes{
 		this.productId = productId;
 		this.targetAge = targetAge;
 		
+		this.feature = ClothesEnCode(type, category, gender, color, season, style);		
 		//Codec Invoke
 		/*
 		this.feature = this.feature + tenToBin(type);
