@@ -5,8 +5,8 @@ import cr.*;
 import java.util.*;
 import java.awt.*;
 
-public class Recommender{
-
-
+public interface RecommendAlgo<T>{
+	
+	public T recommend();
 
 }
