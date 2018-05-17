@@ -9,7 +9,7 @@ public class Clothes{
 
 	public Clothes(){}
 
-	public Clothes(int productId){
+	public Clothes(String productId){
 	
 		this.productId = productId;
 
@@ -33,7 +33,7 @@ public class Clothes{
                         System.out.println("Invalid Feature Information");
 	}
 
-	private int feature;
+	private String feature;
 
 	private String productId;
 
@@ -44,7 +44,7 @@ public class Clothes{
 		return this.feature;
 	}
 
-	public int getProductId(){
+	public String getProductId(){
 		
 		return this.productId;
 		

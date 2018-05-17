@@ -11,7 +11,7 @@ public class ClothesDecode{
 		Type temp_type = Type.type;
 		Category temp_category = Category.category;
 		Gender temp_gender = Gender.gender;
-		Color temp_color = Colr.color;
+		Color temp_color = Color.color;
 		Season temp_season = Season.season;
 		Style temp_style = Style.style;
 
