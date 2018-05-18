@@ -17,7 +17,7 @@ public class Clothes{
 
 	public Clothes(String productId, String type, String category, String gender, String color, String season, String style, String targetAge){
 		this.productId = productId;
-		this.targetAge = targetAge;
+		this.targetAge = Integer.parseInt(targetAge);
 		
 		this.feature = ClothesEnCode(type, category, gender, color, season, style);		
 		//Codec Invoke

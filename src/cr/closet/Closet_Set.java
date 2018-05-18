@@ -9,7 +9,7 @@ public class Closet_Set{
 
 	private String closet_SetId = "";
 
-	private Map<Integer, Closet> closet_set = new HashMap<Integer, Closet>();
+	private Map<String, Closet> closet_set = new HashMap<String, Closet>();
 	
 	public Closet_Set(int type, int num){
 		String ty = "";
@@ -19,24 +19,24 @@ public class Closet_Set{
 		
 		this.closet_SetId = ty + num;
 	}
-	
+/*	
 	public void getClosetMap(){
 		
-		Set<Integer> keySet = closet_set.keySet();
+		Set<String> keySet = closet_set.keySet();
 
-		Iterator<Integer> iterator = keySet.iterator();
+		Iterator<String> iterator = keySet.iterator();
 
 		while(iterator.hasNext()) {
  
-			Integer key = iterator.next();
+			String key = iterator.next();
 			Closet value = closet_set.get(key);
 
-			System.out.printf("closetId : %d , ClosetFeature : %d %n", key, value.getFeature());
+			System.out.println("closetId : "+key+", ClosetFeature : "+value.getFeature());
 		}
 
 		//TODO:return
 	}
-
+*/
 	public Closet getCloset(int closetId){
 
 		return closet_set.get(closetId);

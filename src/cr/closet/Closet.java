@@ -9,7 +9,7 @@ public class Closet{
 
 	private String closetId = "";
 
-	private Map<Integer, Clothes> closet = new HashMap<Integer, Clothes>();
+	private Map<String, Clothes> closet = new HashMap<String, Clothes>();
 	
 	public Closet(int type, int num){
 		String ty = "";
@@ -22,16 +22,16 @@ public class Closet{
 	
 	public void getClothesMap(){
 		
-		Set<Integer> keySet = closet.keySet();
+		Set<String> keySet = closet.keySet();
 
-		Iterator<Integer> iterator = keySet.iterator();
+		Iterator<String> iterator = keySet.iterator();
 
 		while(iterator.hasNext()) {
  
-			Integer key = iterator.next();
+			String key = iterator.next();
 			Clothes value = closet.get(key);
 
-			System.out.printf("productId : %d , ClothesFeature : %d %n", key, value.getFeature());
+			System.out.println("productId"+key+" , ClothesFeature : "+value.getFeature());
 		}
 
 		//TODO:return
@@ -39,12 +39,18 @@ public class Closet{
 
 	public Clothes getClothes(int productId){
 
-		return closet.get(productId);
+		return this.closet.get(productId);
 	}
 
 	public void setClothesMap(Clothes clothes){
 
 		this.closet.put(clothes.getProductId(), clothes);
+
+	}
+
+	public String getClosetId(){
+
+		return this.closetId;
 
 	}
 
