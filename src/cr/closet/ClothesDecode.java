@@ -5,8 +5,8 @@ import cr.*;
 import java.awt.*;
 import java.util.*;
 
-public class ClothesEncode{
-	public ClothesEncode(){}
+public class ClothesDecode{
+	public ClothesDecode(){}
 	Type del_type;
 	Category del_category;
 	Gender del_gender;
@@ -14,7 +14,7 @@ public class ClothesEncode{
 	Season del_season;
 	Style del_style;
 	
-	public ClothesEncode(int[] feature){
+	public ClothesDecode(int[] feature){
 		switch(feature[1]){
 			case 1:
 			del_category = Category.OUTERWEAR;break;
