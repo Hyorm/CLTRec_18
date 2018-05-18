@@ -5,9 +5,9 @@ import cr.*;
 import java.util.*;
 import java.awt.*;
 
-public class ClothesDecode{
-	public ClothesDecode(){}
-	public ClothesDecode(String type, String category, String gender, String color, String season, String style){
+public class ClothesEncode{
+	public ClothesEncode(){}
+	public ClothesEncode(String type, String category, String gender, String color, String season, String style){
 		Type temp_type = Type.type;
 		Category temp_category = Category.category;
 		Gender temp_gender = Gender.gender;
