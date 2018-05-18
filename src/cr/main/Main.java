@@ -33,6 +33,10 @@ public class Main{
 
 	public static void main(String[] args){
 
+		String[] noUser = {"default","default","nil", "nil", "1234"};
+
+		user = new User(noUser);
+
 		//North MenuBar Component
 		JTextField searchText ;
 
@@ -57,7 +61,7 @@ public class Main{
                 searchText = new JTextField(10);
 
                 //User Page Icon --> Use User Id img
-                userProfile = new ImageIcon("./img/userImage/root.png");
+                userProfile = new ImageIcon("./img/userImage/"+user.getUserId()+".png");
                 userImage = userProfile.getImage();
                 userImage = userImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
                 userProfile = new ImageIcon(userImage);
@@ -78,10 +82,11 @@ public class Main{
 				
 				userInfo = logGUI.getUserInfo();
 				
-                		if(!userInfo[0].equals("nil")){
+                		if(userInfo[0]!=null){
 					user = new User(userInfo);
 					//change Pane
 				}
+				
 			}
 		});
 

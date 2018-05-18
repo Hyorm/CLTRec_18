@@ -68,29 +68,4 @@ public class CompositePanel extends JPanel{
 
         }
 
-		//north.setPreferredSize(new Dimension(0, 50));
-/*
-		north.setLayout(null);
-		north.setBounds(0,0,1440, 50);
-
-		btn[0].setLocation(1000, 10);
-		btn[0].setSize(50, 10);
-
-		north.add(btn[0]);	
-	
-		CFrame.adds(north, "North");
-
-		west.setPreferredSize(new Dimension(200, 100));		
-
-		west.add(btn[1]);
-
-		CFrame.adds(west, "West");
-		CFrame.adds(btn[2], "Center");
-		
-		CFrame.size(1440,900);
-		CFrame.start();	
-
-	}
-*/
-
 }
