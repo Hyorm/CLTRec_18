@@ -37,13 +37,6 @@ public class Main{
 
 		user = new User(noUser);
 
-		//North MenuBar Component
-		JTextField searchText ;
-
-		ImageIcon userProfile;
-		Image userImage;
-		JButton myPage;
-
 		//West MenuBar Comonent
 		ImageIcon logo;
 		Image logoRe;
@@ -51,50 +44,14 @@ public class Main{
 		JButton[] menu = new JButton[5];
 
 		//Set LayOut
-		north = new CompositePanel(0,0,1440,80);
 		west = new CompositePanel(9,1,0,80,200,850);
                	//CompositePanel center = new CompositePanel(200,80,1240,850);
                 
 		contentPane = CFrame.getContentPane();
 
                 //North Menu Bar
-                searchText = new JTextField(10);
-
-                //User Page Icon --> Use User Id img
-                userProfile = new ImageIcon("./img/userImage/"+user.getUserId()+".png");
-                userImage = userProfile.getImage();
-                userImage = userImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-                userProfile = new ImageIcon(userImage);
-		
-                myPage = new JButton(userProfile);
-
-                myPage.setContentAreaFilled(false);
-                myPage.setBorderPainted(false);
-                myPage.setFocusPainted(false);
-
-		myPage.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e){
-                		int userAttNum = 5;
-                		String[] userInfo = new String[userAttNum];
-
-				LogGUI logGUI = new LogGUI();
-				
-				userInfo = logGUI.getUserInfo();
-				
-                		if(userInfo[0]!=null){
-					user = new User(userInfo);
-					//change Pane
-				}
-				
-			}
-		});
-
-                north.adds(searchText, 300, 10, 200, 25);
-                north.adds(myPage, 1200, 10, 30, 30);
-
-                contentPane.add(north);
-
+              
+                contentPane.add(new NorthPanel(CFrame));
 
                 //West Menu Bar
 
