@@ -6,15 +6,16 @@ import java.awt.*;
 public class Parser{
 	public static String[][] matrix;
 
-	public static String[][] makeMatrix(String str, int usrNum,int num){
+	private static int row;
 
+	public static String[][] makeMatrix(String str, int usrNum,int num){
 
 		String[] substr = str.split("%%");
 
 		matrix = new String[usrNum][num];
 
-		int row = 0;
 		int ind = 0;
+		row = 0;
 
 		for(String sub: substr){
 			if(ind++ ==0)continue;
@@ -32,6 +33,7 @@ public class Parser{
 
 			}
 		}
+		row--;
 		return matrix;
 	}
 
@@ -58,11 +60,10 @@ public class Parser{
 	}
 	
 	public static String[] findThis(String str, int usrNum, int num, String isUserID, String isUserPW)throws Exception{
-		String nil[] = {"nil", "", "", "", ""};
+		String nil[] = {"nil", "nil", "nil", "nil", "nil"};
 		
 		makeMatrix(str, usrNum, num);	
-	
-		for(int i = 0; i < num; i++)
+		for(int i = 0; i < row; i++)
 			if(isUserID.equals(matrix[i][0]) && isUserPW.equals(matrix[i][1]))
 				return matrix[i];
 		return nil;

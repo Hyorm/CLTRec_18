@@ -12,12 +12,24 @@ public class LogGUI{
 	
 		public static String[] userInfo = new String[5];
 		private static boolean userLock = true;
-	public LogGUI(){
+		CustomFrame LFrame;
+                CompositePanel LPanel;
+	public LogGUI(User user){
 
-		CustomFrame LFrame = new CustomFrame("Login");
-		CompositePanel LPanel = new CompositePanel(6, 1);
-		User logUser;
-		System.out.println("This is User form");
+		if(false==user.getUserId().equals("default")){
+			LFrame.dispose();
+		}
+		else{
+			loginPage();
+		}
+	}
+	public void loginPage(){
+		LFrame = new CustomFrame("Login");
+		LPanel = new CompositePanel(6, 1);
+
+		LFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		System.out.println("This is login form");
 
 		JLabel idLab = new JLabel("ID");
 		idLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -34,7 +46,7 @@ public class LogGUI{
                         public void actionPerformed(ActionEvent e){
                                 //id connect
 				userInfo = LogOn.logOn(inputID.getText(), inputPW.getText());
-				if(!userInfo[0].equals("nil")){
+				if(userInfo[0].equals("nil")==false){
 					LFrame.dispose();
 				
 				}else{
@@ -53,19 +65,20 @@ public class LogGUI{
                         }
                 });
 		
-		LPanel.adds(idLab);
-		LPanel.adds(inputID);
+		this.LPanel.adds(idLab);
+		this.LPanel.adds(inputID);
 
-		LPanel.adds(pwLab);
-		LPanel.adds(inputPW);
+		this.LPanel.adds(pwLab);
+		this.LPanel.adds(inputPW);
 
-		LPanel.adds(logBtn);
-		LPanel.adds(regBtn);
+		this.LPanel.adds(logBtn);
+		this.LPanel.adds(regBtn);
 
-		LFrame.adds(LPanel);
-		LFrame.size(500, 800).start();
+		this.LFrame.adds(this.LPanel);
+		this.LFrame.size(500, 800).start();
 
-		System.out.println(userInfo[0]);
+		//System.out.println(userInfo[0]);
+
 	}
 	
 	public String[] getUserInfo(){
