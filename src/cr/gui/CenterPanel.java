@@ -2,6 +2,7 @@ package cr.main;
   
 import cr.gui.*;
 import cr.usr.*;
+import cr.closet.*;
 
 import java.awt.*;
 import java.util.*;
@@ -11,22 +12,24 @@ import javax.swing.*;
 public class CenterPanel extends JPanel{
 
 	private CustomFrame CFrame;
+	private User user;
+	private Closet dataCloset;
 
-        public CenterPanel(CustomFrame CFrame, int flag){
+        public CenterPanel(CustomFrame CFrame, int flag, Closet dataCloset){
+		this.dataCloset = dataCloset;
+		setPanel();
 
-		this.CFrame = CFrame;
 		if(flag == 0)
-			firstCenterPanel(200, 80);
-		else
-			firstCenterPanel(0, 0);
+			firstCenterPanel_Main(200, 80);
+		else if(flag == 1)
+			firstCenterPanel_Main(0, 0);
+		else if(flag == 1)
+			secondCenterPanel_Show_ClT();
 
 	}
-	
-	public void firstCenterPanel(int x, int y){
-		
-		String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
-
-		this.setLayout(null);
+	public void setPanel(){
+		this.CFrame = CFrame;
+                this.setLayout(null);
                 this.setBounds(200,80,1100,820);
 
                 Random rd = new Random();
@@ -34,6 +37,12 @@ public class CenterPanel extends JPanel{
                 //this.setBackground(b);
 
                 this.setBackground(Color.white);
+
+	}
+	
+	public void firstCenterPanel_Main(int x, int y){
+		
+		String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
 
 		JLabel recoClosetLab = new JLabel("Today's Pick");
 		JLabel newClothesLab = new JLabel("New Clothes");
@@ -151,4 +160,10 @@ public class CenterPanel extends JPanel{
 
 		}
         }
+	public void secondCenterPanel_Show_ClT(/*String productId*/){
+
+		
+
+
+	}
 }

@@ -2,6 +2,7 @@ package cr.main;
 
 import cr.gui.*;
 import cr.usr.*;
+import cr.closet.*;
 
 import java.awt.*;
 import java.util.*;
@@ -25,8 +26,12 @@ public class NorthPanel extends JPanel{
 	private CustomFrame CFrame;
 
 	private Container CtPane = new Container();
+	
+	private Closet dataCloset;
 
-	public NorthPanel(CustomFrame CFrame){
+	public NorthPanel(CustomFrame CFrame,Closet dataCloset){
+
+		this.dataCloset = dataCloset;
 
 		String[] noUser = {"default","default","nil", "nil", "1234"};
 
@@ -68,8 +73,8 @@ public class NorthPanel extends JPanel{
                 		if(userInfo[0].equals("nil")==false){
 					System.out.println("Change");	
 					user = new User(userInfo);
-					CtPane.add(new NorthPanel(CFrame, user));
-					CtPane.add(new CenterPanel(CFrame, 1));
+					CtPane.add(new NorthPanel(CFrame, user, dataCloset));
+					CtPane.add(new CenterPanel(CFrame, 1,dataCloset));
 					CtPane.add(new WestPanel(CFrame, user));
 					CFrame.repaint();
 					CFrame.setContentPane(CtPane);
@@ -88,8 +93,9 @@ public class NorthPanel extends JPanel{
 
 	}
 
-	public NorthPanel(CustomFrame CFrame, User user){
+	public NorthPanel(CustomFrame CFrame, User user, Closet dataCloset){
 
+		this.dataCloset = dataCloset;
 		System.out.println("North");
 		this.CFrame = CFrame;
 		this.user = user;

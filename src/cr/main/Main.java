@@ -13,6 +13,7 @@ package cr.main;
 
 import cr.gui.*;
 import cr.usr.*;
+import cr.closet.*;
 
 import java.awt.*;
 import java.util.*;
@@ -25,21 +26,44 @@ public class Main{
 		static private User user;
 
 		//FrameLayout
-		static CustomFrame CFrame = new CustomFrame("CLTRec_Beta");
+		static public CustomFrame CFrame = new CustomFrame("CLTRec_Beta");
 		static protected Container contentPane = new Container();	
+
+		//Closet
+		static public Closet myCloset = new Closet();
+		static public Closet dataCloset = new Closet();
+		static public Closet userCloset = new Closet();
+
+		//Closet_Set
+		static public Closet_Set recoCloset_Set = new Closet_Set();
+		static public Closet_Set myCloset_Set = new Closet_Set();
 
 	public static void main(String[] args){
 
-		//Set LayOut
-                
-		contentPane = CFrame.getContentPane();
-              
-                contentPane.add(new NorthPanel(CFrame));
+		String dataStr = "";
 
-		contentPane.add(new WestPanel(CFrame));
+		//TODO: Set dataCloset
+		try{
+			dataStr = ReadFile.readFile("data/data.csv");
+		}
+		catch(Exception e){
+			e.printStackTrace();
 
-                contentPane.add(new CenterPanel(CFrame, 0));
+		}
+		StringTokenizer s = new StringTokenizer(dataStr);
+		final int dataNum = Integer.parseInt(s.nextToken("%%"));
+		Parser.makeMatrix(dataStr, dataNum, 8);
+		for(int i = 1; i< dataNum; i++){
+			dataCloset.setClothesMap(new Clothes(Parser.matrix[i]));
+		}
 
+                //Set LayOut
+                contentPane = CFrame.getContentPane();
+                contentPane.add(new NorthPanel(CFrame, dataCloset));
+                contentPane.add(new WestPanel(CFrame));
+                contentPane.add(new CenterPanel(CFrame, 0, dataCloset));
+
+		//Start frame
                 CFrame.size(1300,900);
                 CFrame.start();
 
