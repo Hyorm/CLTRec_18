@@ -5,7 +5,7 @@ import cr.*;
 import java.util.*;
 import java.awt.*;
 
-public enum Color{
+public enum ColorClothes{
 	RED,
 	ORANGE,
 	YELLOW,
