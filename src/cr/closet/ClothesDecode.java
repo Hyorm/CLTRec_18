@@ -7,135 +7,135 @@ import java.util.*;
 
 public class ClothesDecode{
 	public ClothesDecode(){}
-	Type del_type;
-	Category del_category;
-	Gender del_gender;
-	Color del_color;
-	Season del_season;
-	Style del_style;
+	private String del_type;
+	private String del_category;
+	private String del_gender;
+	private String del_color;
+	private String del_season;
+	private String del_style;
 	
 	public ClothesDecode(int[] feature){
 		switch(feature[1]){
+			case 0:
+			del_category = "OUTERWEAR";break;
 			case 1:
-			del_category = Category.OUTERWEAR;break;
+			del_category = "DRESSES";break;
 			case 2:
-			del_category = Category.DRESSES;break;
+			del_category = "SHIRTS_BLOUSES";break;
 			case 3:
-			del_category = Category.SHIRTS_BLOUSES;break;
+			del_category = "KNITWEAR";break;
 			case 4:
-			del_category = Category.KNITWEAR;break;
+			del_category = "T_SHIRTS";break;
 			case 5:
-			del_category = Category.T_SHIRTS;break;
+			del_category = "PANTS_TROUSERS";break;
 			case 6:
-			del_category = Category.PANTS_TROUSERS;break;
+			del_category = "SKIRTS";break;
 			case 7:
-			del_category = Category.SKIRTS;break;
+			del_category = "BAGS";break;
 			case 8:
-			del_category = Category.BAGS;break;
+			del_category = "WALLETS";break;
 			case 9:
-			del_category = Category.WALLETS;break;
+			del_category = "HAT";break;
 			case 10:
-			del_category = Category.HAT;break;
+			del_category = "CAP";break;
 			case 11:
-			del_category = Category.CAP;break;
+			del_category = "BONNET";break;
 			case 12:
-			del_category = Category.BONNET;break;
+			del_category = "DERBY";break;
 			case 13:
-			del_category = Category.DERBY;break;
+			del_category = "BOOTS";break;
 			case 14:
-			del_category = Category.BOOTS;break;
+			del_category = "DRESSSHOES";break;
 			case 15:
-			del_category = Category.DRESSSHOES;break;
-			case 16:
-			del_category = Category.SNEAKERS;break;	
+			del_category = "SNEAKERS";break;	
 		}
 		switch(feature[0]){
+			case 0:
+			del_type = "ACCESSORIES";break;
 			case 1:
-			del_type = Type.ACCESSORIES;break;
+			del_type = "SHOES";break;
 			case 2:
-			del_type = Type.SHOES;break;
+			del_type = "HAT";break;
 			case 3:
-			del_type = Type.HAT;break;
-			case 4:
-			del_type = Type.WEAR;break;
+			del_type = "WEAR";break;
 		}
 		switch(feature[2]){
+			case 0:
+			del_gender = "WOMAN";break;
 			case 1:
-			del_gender = Gender.WOMAN;break;
+			del_gender = "MAN";break;
 			case 2:
-			del_gender = Gender.MAN;break;
+			del_gender = "CHILDREN";break;
 			case 3:
-			del_gender = Gender.CHILDREN;break;
-			case 4:
-			del_gender = Gender.UNI_SEX;break;
+			del_gender = "UNI_SEX";break;
 		}
 		switch(feature[3]){
+			case 0:
+			del_color = "RED";break;
 			case 1:
-			del_color = Color.RED;break;
+			del_color = "ORANGE";break;
 			case 2:
-			del_color = Color.ORANGE;break;
+			del_color = "YELLOW";break;
 			case 3:
-			del_color = Color.YELLOW;break;
+			del_color = "GREEN";break;
 			case 4:
-			del_color = Color.GREEN;break;
+			del_color = "BLUE";break;
 			case 5:
-			del_color = Color.BLUE;break;
+			del_color = "NAVY";break;
 			case 6:
-			del_color = Color.NAVY;break;
+			del_color = "PURPLE";break;
 			case 7:
-			del_color = Color.PURPLE;break;
+			del_color = "BLACK";break;
 			case 8:
-			del_color = Color.BLACK;break;
+			del_color = "WHITE";break;
 			case 9:
-			del_color = Color.WHITE;break;
+			del_color = "PINK";break;
 			case 10:
-			del_color = Color.PINK;break;
+			del_color = "GRAY";break;
 			case 11:
-			del_color = Color.GRAY;break;
+			del_color = "KHAKI";break;
 			case 12:
-			del_color = Color.KHAKI;break;
+			del_color = "BROWN";break;
 			case 13:
-			del_color = Color.BROWN;break;
+			del_color = "IVORY";break;
 			case 14:
-			del_color = Color.IVORY;break;
+			del_color = "WINE";break;
 			case 15:
-			del_color = Color.WINE;break;
-			case 16:
-			del_color = Color.CHARCOAL;break;
+			del_color = "CHARCOAL";break;
 		}
 		switch(feature[4]){
+			case 0:
+			del_season = "SPRING";break;
 			case 1:
-			del_season = Season.SPRING;break;
+			del_season = "SUMMER";break;
 			case 2:
-			del_season = Season.SUMMER;break;
+			del_season = "FALL";break;
 			case 3:
-			del_season = Season.FALL;break;
-			case 4:
-			del_season = Season.WINTER;break; 
+			del_season = "WINTER";break; 
 		}
 		switch(feature[5]){
+			case 0:
+			del_style = "STREET";break;
 			case 1:
-			del_style = Style.STREET;break;
+			del_style = "FORMAL";break;
 			case 2:
-			del_style = Style.FORMAL;break;
+			del_style = "VINTAGE";break;
 			case 3:
-			del_style = Style.VINTAGE;break;
+			del_style = "BOHEMIAN";break;
 			case 4:
-			del_style = Style.BOHEMIAN;break;
+			del_style = "CHIC";break;
 			case 5:
-			del_style = Style.CHIC;break;
+			del_style = "ARTSY";break;
 			case 6:
-			del_style = Style.ARTSY;break;
+			del_style = "CASUAL";break;
 			case 7:
-			del_style = Style.CASUAL;break;
+			del_style = "SOPHISTICATED";break;
 			case 8:
-			del_style = Style.SOPHISTICATED;break;
+			del_style = "TOMBOY";break;
 			case 9:
-			del_style = Style.TOMBOY;break;
+			del_style = "ROCKER";break;
 			case 10:
-			del_style = Style.ROCKER;break;
-			case 11:
-			del_style = Style.PREPPY;break;
+			del_style = "PREPPY";break;
 		}
 	//Encode file로 넘기기	
 	}

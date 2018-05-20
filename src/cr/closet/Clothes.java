@@ -18,8 +18,8 @@ public class Clothes{
 	public Clothes(String productId, String type, String category, String gender, String color, String season, String style, String targetAge){
 		this.productId = productId;
 		this.targetAge = Integer.parseInt(targetAge);
-		
-		this.feature = ClothesEnCode(type, category, gender, color, season, style);		
+					
+		ClothesEncode feature = new ClothesEncode(type, category, gender, color, season, style, targetAge);
 		//Codec Invoke
 		/*
 		this.feature = this.feature + tenToBin(type);
@@ -28,20 +28,21 @@ public class Clothes{
 		this.feature = this.feature + tenToBin(color);
 		this.feature = this.feature + tenToBin(season);
 		this.feature = this.feature + tenToBin(style);
-		*/
-		if((feature.length()>24)||feature.length()<0)
+		
+		if((feature.length>24)||feature.length<0)
                         System.out.println("Invalid Feature Information");
+		*/
 	}
 
-	private String feature;
+	private int[] feature = new int[6];
 
 	private String productId;
 
 	private int targetAge;//1010 || 1020 || etc
 
-	public String getFeature(){
+	public int[] getFeature(){
 
-		return this.feature;
+		return feature;
 	}
 
 	public String getProductId(){
