@@ -19,7 +19,7 @@ public class Clothes{
 		this.productId = productId;
 		this.targetAge = Integer.parseInt(targetAge);
 					
-		ClothesEncode feature = new ClothesEncode(type, category, gender, color, season, style, targetAge);
+		int[] feature = ClothesEncode.clothesEncode(type, category, gender, color, season, style);
 		//Codec Invoke
 		/*
 		this.feature = this.feature + tenToBin(type);

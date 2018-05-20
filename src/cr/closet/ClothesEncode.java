@@ -6,16 +6,9 @@ import java.util.*;
 import java.awt.*;
 
 public class ClothesEncode{
-	private String type;
-	private String category;
-	private String gender;
-	private String color;
-	private String season;
-	private String style;
-	private int[] feature = new int[6];
+	public static int[] feature = new int[6];
 
-	public ClothesEncode(){}
-	public int[] ClothesEncode(String type, String category, String gender, String color, String season, String style){
+	public static int[] clothesEncode(String type, String category, String gender, String color, String season, String style){
 		
 		switch(type){
 			case "ACCESSORIES":
