@@ -10,14 +10,23 @@ import javax.swing.*;
 
 public class LogGUI{
 	
-		public static String[] userInfo = new String[5];
+		public static String[] userInfo = {"nil","nil","nil","nil","nil"};
 		private static boolean userLock = true;
-	public LogGUI(){
+	public LogGUI(User user){
+		System.out.println(">>"+userInfo[0]);	
+		if(userInfo[0].equals("nil")){
+			loginPage();
+		}
+	}
+	public void loginPage(){
+		CustomFrame LFrame;
+                CompositePanel LPanel;
+		LFrame = new CustomFrame("Login");
+		LPanel = new CompositePanel(6, 1);
 
-		CustomFrame LFrame = new CustomFrame("Login");
-		CompositePanel LPanel = new CompositePanel(6, 1);
-		User logUser;
-		System.out.println("This is User form");
+		LFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		System.out.println("This is login form");
 
 		JLabel idLab = new JLabel("ID");
 		idLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -34,7 +43,7 @@ public class LogGUI{
                         public void actionPerformed(ActionEvent e){
                                 //id connect
 				userInfo = LogOn.logOn(inputID.getText(), inputPW.getText());
-				if(!userInfo[0].equals("nil")){
+				if(userInfo[0].equals("nil")==false){
 					LFrame.dispose();
 				
 				}else{
@@ -65,7 +74,8 @@ public class LogGUI{
 		LFrame.adds(LPanel);
 		LFrame.size(500, 800).start();
 
-		System.out.println(userInfo[0]);
+		//System.out.println(userInfo[0]);
+
 	}
 	
 	public String[] getUserInfo(){
