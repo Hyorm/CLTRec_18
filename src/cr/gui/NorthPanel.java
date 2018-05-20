@@ -23,7 +23,8 @@ public class NorthPanel extends JPanel{
 	private JButton addClothesBtn;
 
 	private CustomFrame CFrame;
-	
+
+	private Container CtPane = new Container();
 
 	public NorthPanel(CustomFrame CFrame){
 
@@ -64,10 +65,17 @@ public class NorthPanel extends JPanel{
 
 				userInfo = logGUI.getUserInfo();
 				
-                		if(userInfo[0]!=null){
-				
+                		if(userInfo[0].equals("nil")==false){
+					System.out.println("Change");	
 					user = new User(userInfo);
-					CFrame.setContentPane(new NorthPanel(CFrame, user));
+					CtPane.add(new NorthPanel(CFrame, user));
+					CtPane.add(new CenterPanel(CFrame, 1));
+					CtPane.add(new WestPanel(CFrame, user));
+					CFrame.repaint();
+					CFrame.setContentPane(CtPane);
+					CFrame.setVisible(true);
+					
+					
 				}
 			}
 		});
@@ -82,6 +90,7 @@ public class NorthPanel extends JPanel{
 
 	public NorthPanel(CustomFrame CFrame, User user){
 
+		System.out.println("North");
 		this.CFrame = CFrame;
 		this.user = user;
 		this.setLayout(null);
@@ -109,7 +118,7 @@ public class NorthPanel extends JPanel{
                 myPageBtn.addActionListener(new ActionListener(){
 
                         public void actionPerformed(ActionEvent e){
-                                        //Logout or Set Circumstance
+                                        System.out.println("this");
 
                         }
                 });

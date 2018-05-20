@@ -10,20 +10,17 @@ import javax.swing.*;
 
 public class LogGUI{
 	
-		public static String[] userInfo = new String[5];
+		public static String[] userInfo = {"nil","nil","nil","nil","nil"};
 		private static boolean userLock = true;
-		CustomFrame LFrame;
-                CompositePanel LPanel;
 	public LogGUI(User user){
-
-		if(false==user.getUserId().equals("default")){
-			LFrame.dispose();
-		}
-		else{
+		System.out.println(">>"+userInfo[0]);	
+		if(userInfo[0].equals("nil")){
 			loginPage();
 		}
 	}
 	public void loginPage(){
+		CustomFrame LFrame;
+                CompositePanel LPanel;
 		LFrame = new CustomFrame("Login");
 		LPanel = new CompositePanel(6, 1);
 
@@ -65,17 +62,17 @@ public class LogGUI{
                         }
                 });
 		
-		this.LPanel.adds(idLab);
-		this.LPanel.adds(inputID);
+		LPanel.adds(idLab);
+		LPanel.adds(inputID);
 
-		this.LPanel.adds(pwLab);
-		this.LPanel.adds(inputPW);
+		LPanel.adds(pwLab);
+		LPanel.adds(inputPW);
 
-		this.LPanel.adds(logBtn);
-		this.LPanel.adds(regBtn);
+		LPanel.adds(logBtn);
+		LPanel.adds(regBtn);
 
-		this.LFrame.adds(this.LPanel);
-		this.LFrame.size(500, 800).start();
+		LFrame.adds(LPanel);
+		LFrame.size(500, 800).start();
 
 		//System.out.println(userInfo[0]);
 

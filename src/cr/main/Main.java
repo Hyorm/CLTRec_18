@@ -26,9 +26,6 @@ public class Main{
 
 		//FrameLayout
 		static CustomFrame CFrame = new CustomFrame("CLTRec_Beta");
-		static CompositePanel north = new CompositePanel();
-		static CompositePanel west = new CompositePanel();
-		static protected CompositePanel center = new CompositePanel();
 		static protected Container contentPane = new Container();	
 
 	public static void main(String[] args){
@@ -41,7 +38,7 @@ public class Main{
 
 		contentPane.add(new WestPanel(CFrame));
 
-                contentPane.add(new CenterPanel(CFrame));
+                contentPane.add(new CenterPanel(CFrame, 0));
 
                 CFrame.size(1440,900);
                 CFrame.start();
