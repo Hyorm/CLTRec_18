@@ -7,11 +7,19 @@ import java.awt.*;
 
 public class Clothes{
 
+	private int[] feature = new int[6];
+
+	private String productId;
+
+	private int targetAge;//1010 || 1020 || etc
+	
 	public Clothes(){}
 
-	public Clothes(String productId){
+	public Clothes(String[] data){
 	
-		this.productId = productId;
+		this.productId = data[0];
+		this.targetAge = Integer.parseInt(data[1]);
+		this.feature = ClothesEncode.clothesEncode(data[2], data[3], data[4], data[5], data[6], data[7]);
 
 	}
 
@@ -19,7 +27,7 @@ public class Clothes{
 		this.productId = productId;
 		this.targetAge = Integer.parseInt(targetAge);
 					
-		int[] feature = ClothesEncode.clothesEncode(type, category, gender, color, season, style);
+		this.feature = ClothesEncode.clothesEncode(type, category, gender, color, season, style);
 		//Codec Invoke
 		/*
 		this.feature = this.feature + tenToBin(type);
@@ -33,12 +41,6 @@ public class Clothes{
                         System.out.println("Invalid Feature Information");
 		*/
 	}
-
-	private int[] feature = new int[6];
-
-	private String productId;
-
-	private int targetAge;//1010 || 1020 || etc
 
 	public int[] getFeature(){
 
