@@ -34,7 +34,7 @@ public class NorthPanel extends JPanel{
 		this.CFrame = CFrame;
 
 		this.setLayout(null);
-		this.setBounds(0,0,1440,80);
+		this.setBounds(0,0,1300,80);
                 Random rd = new Random();
                 Color b =  new Color(rd.nextInt(10000)%256, rd.nextInt(100000)%256, rd.nextInt(1234)%256);
                 //this.setBackground(b);
@@ -81,7 +81,7 @@ public class NorthPanel extends JPanel{
 		});
 
 		searchText.setBounds(300, 20, 200, 25);
-		myPageBtn.setBounds(1200, 20, 30, 30);
+		myPageBtn.setBounds(1050, 20, 30, 30);
 
                 this.add(searchText);
                 this.add(myPageBtn);
@@ -137,14 +137,14 @@ public class NorthPanel extends JPanel{
 		addClothesBtn.addActionListener(new ActionListener(){
 
                         public void actionPerformed(ActionEvent e){
-                                        //Add Clothes
+                                        System.out.println("addClothes");
 
                         }
                 });		
 		
 		searchText.setBounds(300, 20, 200, 25);
-                myPageBtn.setBounds(1200, 20, 30, 30);
-		addClothesBtn.setBounds(1250, 20, 30, 30);
+                myPageBtn.setBounds(1050, 20, 30, 30);
+		addClothesBtn.setBounds(1120, 20, 30, 30);
 
                 this.add(searchText);
                 this.add(myPageBtn);

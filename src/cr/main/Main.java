@@ -40,7 +40,7 @@ public class Main{
 
                 contentPane.add(new CenterPanel(CFrame, 0));
 
-                CFrame.size(1440,900);
+                CFrame.size(1300,900);
                 CFrame.start();
 
 	}

@@ -27,7 +27,7 @@ public class CenterPanel extends JPanel{
 		String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
 
 		this.setLayout(null);
-                this.setBounds(200,80,1240,820);
+                this.setBounds(200,80,1100,820);
 
                 Random rd = new Random();
                 Color b =  new Color(rd.nextInt(10000)%256, rd.nextInt(100000)%256, rd.nextInt(1234)%256);
@@ -89,31 +89,66 @@ public class CenterPanel extends JPanel{
 
 		}
 
+		for(int i = 0; i < 11; i++){
+
+			KeyWordBtn[i] = new JButton(keyword[i]);
+
+			KeyWordBtn[i].setBorderPainted(false);
+
+			KeyWordBtn[i].addActionListener(new ActionListener(){
+                                public void actionPerformed(ActionEvent e){
+                                        //Logout or Set Circumstance
+
+                                }
+                        });
+
+		}
 
                 recoClosetLab.setBounds(100+x, 10+y, 200, 30);
                 recoClosetSetBtn[0].setBounds(100+x, 70+y, 400, 200);
                 recoClosetSetBtn[1].setBounds(570+x, 70+y, 400, 200);
 
-		newClothesLab.setBounds(100+x, 320+y, 200, 20);
+		newClothesLab.setBounds(100+x, 320+y, 200, 30);
 
 		int num = 100;
 
 		for(int i = 0; i < 6; i++){
 	
-			newClothesBtn[i].setBounds(num+x,350+y,100,100);
+			newClothesBtn[i].setBounds(num+x,360+y,100,100);
 
 			num += 150;
 		}
 
+		int keyWordNum = 100;
+		keyWordLab.setBounds(100+x, 490+y, 200, 30);
+		for(int i = 0; i < 6; i++){
+
+			KeyWordBtn[i].setBounds(keyWordNum+x,550+y,130,30);
+			keyWordNum += 150;
+
+		}
+		keyWordNum = 100;
+		for(int i = 6; i < 11; i++){
+
+                        KeyWordBtn[i].setBounds(keyWordNum+x,590+y,150,30);
+                        keyWordNum += 180;
+
+                }
+
+
                 this.add(recoClosetLab);
 		this.add(newClothesLab);
-
+		this.add(keyWordLab);
+	
                 for(int i = 0; i< 2; i++){
                         this.add(recoClosetSetBtn[i]);
                 }
 		for(int i = 0; i < 6; i++){
 			this.add(newClothesBtn[i]);
 		}
+		for(int i = 0; i < 11; i++){
+			this.add(KeyWordBtn[i]);
 
+		}
         }
 }
