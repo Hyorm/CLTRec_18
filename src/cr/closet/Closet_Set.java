@@ -11,6 +11,8 @@ public class Closet_Set{
 
 	private Map<String, Closet> closet_set = new HashMap<String, Closet>();
 	
+	public Closet_Set(){}
+	
 	public Closet_Set(int type, String num){
 		String ty = "";
 		if(type == 0)
