@@ -53,6 +53,11 @@ public class Clothes{
 		
 	}
 
+	public int getTargetAge(){
+	
+		return this.targetAge();
+	}
+	
 	public String tenToBin(int ten){
 
 		String bin = "";
