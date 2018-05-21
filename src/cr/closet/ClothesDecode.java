@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.*;
 
 public class ClothesDecode{
-	public ClothesDecode(){}
+
 	private String del_type;
 	private String del_category;
 	private String del_gender;
