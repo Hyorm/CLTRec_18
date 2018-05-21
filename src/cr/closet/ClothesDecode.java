@@ -7,149 +7,140 @@ import java.util.*;
 
 public class ClothesDecode{
 
-	private String del_type;
-	private String del_category;
-	private String del_gender;
-	private String del_color;
-	private String del_season;
-	private String del_style;
-	
-	public String[] clothesInfo = new String[6];
+	/*
+	private static String clothesInfo[0];
+	private static String clothesInfo[1];
+	private static String clothesInfo[2];
+	private static String clothesInfo[3];
+	private static String clothesInfo[4];
+	private static String clothesInfo[5];
+	*/
+	public static String[] clothesInfo;
 	
 	public static String[] clothesDecode(int[] feature){
+		clothesInfo = new String[6];
 		switch(feature[1]){
 			case 0:
-			del_category = "OUTERWEAR";break;
+			clothesInfo[1] = "OUTERWEAR";break;
 			case 1:
-			del_category = "DRESSES";break;
+			clothesInfo[1] = "DRESSES";break;
 			case 2:
-			del_category = "SHIRTS_BLOUSES";break;
+			clothesInfo[1] = "SHIRTS_BLOUSES";break;
 			case 3:
-			del_category = "KNITWEAR";break;
+			clothesInfo[1] = "KNITWEAR";break;
 			case 4:
-			del_category = "T_SHIRTS";break;
+			clothesInfo[1] = "T_SHIRTS";break;
 			case 5:
-			del_category = "PANTS_TROUSERS";break;
+			clothesInfo[1] = "PANTS_TROUSERS";break;
 			case 6:
-			del_category = "SKIRTS";break;
+			clothesInfo[1] = "SKIRTS";break;
 			case 7:
-			del_category = "BAGS";break;
+			clothesInfo[1] = "BAGS";break;
 			case 8:
-			del_category = "WALLETS";break;
+			clothesInfo[1] = "WALLETS";break;
 			case 9:
-			del_category = "HAT";break;
+			clothesInfo[1] = "HAT";break;
 			case 10:
-			del_category = "CAP";break;
+			clothesInfo[1] = "CAP";break;
 			case 11:
-			del_category = "BONNET";break;
+			clothesInfo[1] = "BONNET";break;
 			case 12:
-			del_category = "DERBY";break;
+			clothesInfo[1] = "DERBY";break;
 			case 13:
-			del_category = "BOOTS";break;
+			clothesInfo[1] = "BOOTS";break;
 			case 14:
-			del_category = "DRESSSHOES";break;
+			clothesInfo[1] = "DRESSSHOES";break;
 			case 15:
-			del_category = "SNEAKERS";break;	
+			clothesInfo[1] = "SNEAKERS";break;	
 		}
 		switch(feature[0]){
 			case 0:
-			del_type = "ACCESSORIES";break;
+			clothesInfo[0] = "ACCESSORIES";break;
 			case 1:
-			del_type = "SHOES";break;
+			clothesInfo[0] = "SHOES";break;
 			case 2:
-			del_type = "HAT";break;
+			clothesInfo[0] = "HAT";break;
 			case 3:
-			del_type = "WEAR";break;
+			clothesInfo[0] = "WEAR";break;
 		}
 		switch(feature[2]){
 			case 0:
-			del_gender = "WOMAN";break;
+			clothesInfo[2] = "WOMAN";break;
 			case 1:
-			del_gender = "MAN";break;
+			clothesInfo[2] = "MAN";break;
 			case 2:
-			del_gender = "CHILDREN";break;
+			clothesInfo[2] = "CHILDREN";break;
 			case 3:
-			del_gender = "UNI_SEX";break;
+			clothesInfo[2] = "UNI_SEX";break;
 		}
 		switch(feature[3]){
 			case 0:
-			del_color = "RED";break;
+			clothesInfo[3] = "RED";break;
 			case 1:
-			del_color = "ORANGE";break;
+			clothesInfo[3] = "ORANGE";break;
 			case 2:
-			del_color = "YELLOW";break;
+			clothesInfo[3] = "YELLOW";break;
 			case 3:
-			del_color = "GREEN";break;
+			clothesInfo[3] = "GREEN";break;
 			case 4:
-			del_color = "BLUE";break;
+			clothesInfo[3] = "BLUE";break;
 			case 5:
-			del_color = "NAVY";break;
+			clothesInfo[3] = "NAVY";break;
 			case 6:
-			del_color = "PURPLE";break;
+			clothesInfo[3] = "PURPLE";break;
 			case 7:
-			del_color = "BLACK";break;
+			clothesInfo[3] = "BLACK";break;
 			case 8:
-			del_color = "WHITE";break;
+			clothesInfo[3] = "WHITE";break;
 			case 9:
-			del_color = "PINK";break;
+			clothesInfo[3] = "PINK";break;
 			case 10:
-			del_color = "GRAY";break;
+			clothesInfo[3] = "GRAY";break;
 			case 11:
-			del_color = "KHAKI";break;
+			clothesInfo[3] = "KHAKI";break;
 			case 12:
-			del_color = "BROWN";break;
+			clothesInfo[3] = "BROWN";break;
 			case 13:
-			del_color = "IVORY";break;
+			clothesInfo[3] = "IVORY";break;
 			case 14:
-			del_color = "WINE";break;
+			clothesInfo[3] = "WINE";break;
 			case 15:
-			del_color = "CHARCOAL";break;
+			clothesInfo[3] = "CHARCOAL";break;
 		}
 		switch(feature[4]){
 			case 0:
-			del_season = "SPRING";break;
+			clothesInfo[4] = "SPRING";break;
 			case 1:
-			del_season = "SUMMER";break;
+			clothesInfo[4] = "SUMMER";break;
 			case 2:
-			del_season = "FALL";break;
+			clothesInfo[4] = "FALL";break;
 			case 3:
-			del_season = "WINTER";break; 
+			clothesInfo[4] = "WINTER";break; 
 		}
 		switch(feature[5]){
 			case 0:
-			del_style = "STREET";break;
+			clothesInfo[5] = "STREET";break;
 			case 1:
-			del_style = "FORMAL";break;
+			clothesInfo[5] = "FORMAL";break;
 			case 2:
-			del_style = "VINTAGE";break;
+			clothesInfo[5] = "VINTAGE";break;
 			case 3:
-			del_style = "BOHEMIAN";break;
+			clothesInfo[5] = "BOHEMIAN";break;
 			case 4:
-			del_style = "CHIC";break;
+			clothesInfo[5] = "CHIC";break;
 			case 5:
-			del_style = "ARTSY";break;
+			clothesInfo[5] = "ARTSY";break;
 			case 6:
-			del_style = "CASUAL";break;
+			clothesInfo[5] = "CASUAL";break;
 			case 7:
-			del_style = "SOPHISTICATED";break;
+			clothesInfo[5] = "SOPHISTICATED";break;
 			case 8:
-			del_style = "TOMBOY";break;
+			clothesInfo[5] = "TOMBOY";break;
 			case 9:
-			del_style = "ROCKER";break;
+			clothesInfo[5] = "ROCKER";break;
 			case 10:
-			del_style = "PREPPY";break;
+			clothesInfo[5] = "PREPPY";break;
 		}
-		setDecodec();
 		return clothesInfo;
-	}
-	public static void setDecodec(){
-		
-		this.clothesInfo[0] = del_type;
-		this.clothesInfo[1] = del_category;
-		this.clothesInfo[2] = del_gender;
-		this.clothesInfo[3] = del_color;
-		this.clothesInfo[4] = del_season;
-		this.clothesInfo[5] = del_style;
-	
 	}
 }

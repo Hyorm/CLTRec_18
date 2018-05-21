@@ -9,7 +9,7 @@ public class Closet_Set{
 
 	private String closet_SetId = "";
 
-	private Map<String, Closet> closet_set = new HashMap<String, Closet>();
+	private HashMap<String, Closet> closet_set = new HashMap<String, Closet>();
 	
 	public Closet_Set(){}
 	

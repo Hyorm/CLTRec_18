@@ -55,7 +55,7 @@ public class Clothes{
 
 	public int getTargetAge(){
 	
-		return this.targetAge();
+		return this.targetAge;
 	}
 	
 	public String tenToBin(int ten){

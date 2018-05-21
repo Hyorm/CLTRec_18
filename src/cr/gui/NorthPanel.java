@@ -11,7 +11,7 @@ import javax.swing.*;
 
 public class NorthPanel extends JPanel{
 	
-	private User user;
+	public static User user;
 	private JTextField searchText ;
 
 	private ImageIcon userProfile;
@@ -74,8 +74,9 @@ public class NorthPanel extends JPanel{
 					System.out.println("Change");	
 					user = new User(userInfo);
 					CtPane.add(new NorthPanel(CFrame, user, dataCloset));
-					CtPane.add(new CenterPanel(CFrame, 1,dataCloset));
-					CtPane.add(new WestPanel(CFrame, user));
+					CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, ""));
+					System.out.println(user.getUserId());
+					CtPane.add(new WestPanel(CFrame, dataCloset, user));
 					CFrame.repaint();
 					CFrame.setContentPane(CtPane);
 					CFrame.setVisible(true);
@@ -96,9 +97,9 @@ public class NorthPanel extends JPanel{
 	public NorthPanel(CustomFrame CFrame, User user, Closet dataCloset){
 
 		this.dataCloset = dataCloset;
+		this.user = user;
 		System.out.println("North");
 		this.CFrame = CFrame;
-		this.user = user;
 		this.setLayout(null);
                 Random rd = new Random();
 		this.setBounds(0,0,1440,80);

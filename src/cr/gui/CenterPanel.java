@@ -14,20 +14,25 @@ public class CenterPanel extends JPanel{
 	private CustomFrame CFrame;
 	private User user;
 	private Closet dataCloset;
+	private Container CtPane = new Container();
 
-        public CenterPanel(CustomFrame CFrame, int flag, Closet dataCloset){
+        public CenterPanel(CustomFrame CFrame, User user, int flag, Closet dataCloset, String productId){
 		this.dataCloset = dataCloset;
-		setPanel();
+		if(user == null)
+			this.user = new User();
+		else
+			this.user = user;
+		setPanel(CFrame);
 
 		if(flag == 0)
 			firstCenterPanel_Main(200, 80);
 		else if(flag == 1)
 			firstCenterPanel_Main(0, 0);
-		else if(flag == 1)
-			secondCenterPanel_Show_ClT();
+		else if(flag == 2)
+			secondCenterPanel_Show_ClT(productId, 0,0);
 
 	}
-	public void setPanel(){
+	public void setPanel(CustomFrame CFrame){
 		this.CFrame = CFrame;
                 this.setLayout(null);
                 this.setBounds(200,80,1100,820);
@@ -91,7 +96,12 @@ public class CenterPanel extends JPanel{
 
 			newClothesBtn[i].addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e){
-                                        //Logout or Set Circumstance
+                                       CtPane.add(new NorthPanel(CFrame, user, dataCloset));
+                                       CtPane.add(new CenterPanel(CFrame,user, 2,dataCloset, "R99999"));
+                                       CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                       CFrame.repaint();
+                                       CFrame.setContentPane(CtPane);
+                                       CFrame.setVisible(true); 
 
                                 }
 			});
@@ -160,10 +170,68 @@ public class CenterPanel extends JPanel{
 
 		}
         }
-	public void secondCenterPanel_Show_ClT(/*String productId*/){
+	public void secondCenterPanel_Show_ClT(String productId,int x, int y){
 
+		String[] clothesInfo = new String[6];
+		Clothes clt = new Clothes();
+		String[] infoList = {"Age","Type","Category","Gender","Color","Season","Style"};
+
+		/*
+		if(this.dataCloset.containsKey(productId))
+			clt = this.dataCloset.getClothes(productId);
 		
+		else{
+			JOptionPane.showMessageDialog(null,"Wrong Access", "No Clothes", JOptionPane.WARNING_MESSAGE);
+			return ;
+		}
+		*/
+		clothesInfo = ClothesDecode.clothesDecode(clt.getFeature());
+		JLabel productIdLab = new JLabel(productId);
+		JLabel[] cltInfoLab = new JLabel[7];
+		JLabel[] infoLab = new JLabel[7];
 
+		Font newLabelFont=new Font(productIdLab.getFont().getName(),productIdLab.getFont().getStyle(),50);
+		productIdLab.setFont(newLabelFont);		
+	
+		ImageIcon cltImgIcon;
+                Image cltImg;
+                JLabel cltImgLab;
+
+		cltImgIcon = new ImageIcon("./img/clothes/"+productId+".jpg");
+                cltImg = cltImgIcon.getImage();
+                cltImg = cltImg.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+                cltImgIcon = new ImageIcon(cltImg);
+                cltImgLab = new JLabel(cltImgIcon);
+
+		cltInfoLab[0] = new JLabel(""+clt.getTargetAge());	
+		cltInfoLab[0].setBounds(700+x, 150+y, 100, 30);
+
+		int infoListNum = 150;
+		for(int i = 0; i< 7; i++){
+			infoLab[i] = new JLabel(infoList[i]);
+			infoLab[i].setBounds(600+x, infoListNum+y, 100, 30);
+			infoListNum += 50;
+			this.add(infoLab[i]);
+		}
+
+
+		int cltInfoYnum = 200;
+		for(int i = 1; i< 7; i++){
+
+			cltInfoLab[i] = new JLabel(clothesInfo[i-1]);
+			cltInfoLab[i].setBounds(700+x, cltInfoYnum+y, 100, 30);
+			cltInfoYnum +=50;
+		}
+
+		productIdLab.setBounds(100+x, 10+y, 500, 50);
+		cltImgLab.setBounds(100+x, 100+y, 400, 400);
+
+		this.add(productIdLab);
+		this.add(cltImgLab);
+		this.add(cltInfoLab[0]);
+		for(int i = 1; i< 7; i++){
+			this.add(cltInfoLab[i]);
+		}
 
 	}
 }
