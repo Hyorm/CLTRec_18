@@ -14,6 +14,8 @@ public class ClothesDecode{
 	private String del_season;
 	private String del_style;
 	
+	public String[] clothesInfo = new String[6];
+	
 	public ClothesDecode(int[] feature){
 		switch(feature[1]){
 			case 0:
@@ -139,12 +141,14 @@ public class ClothesDecode{
 		}
 	//Encode file로 넘기기	
 	}
+	public static void setDecodec(){
+		
+		this.clothesInfo[0] = del_type;
+		this.clothesInfo[1] = del_category;
+		this.clothesInfo[2] = del_gender;
+		this.clothesInfo[3] = del_color;
+		this.clothesInfo[4] = del_season;
+		this.clothesInfo[5] = del_style;
 	
-	private int temp;
-	private int type;
-	private int category;
-	private int gender;
-	private int color;
-	private int season;
-	private int style;
+	}
 }
