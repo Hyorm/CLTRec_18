@@ -16,7 +16,7 @@ public class ClothesDecode{
 	
 	public String[] clothesInfo = new String[6];
 	
-	public ClothesDecode(int[] feature){
+	public String[] clothesDecode(int[] feature){
 		switch(feature[1]){
 			case 0:
 			del_category = "OUTERWEAR";break;
@@ -139,7 +139,8 @@ public class ClothesDecode{
 			case 10:
 			del_style = "PREPPY";break;
 		}
-	//Encode file로 넘기기	
+		setDecodec();
+		return clothesInfo;
 	}
 	public static void setDecodec(){
 		
