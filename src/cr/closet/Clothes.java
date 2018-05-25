@@ -9,9 +9,9 @@ public class Clothes{
 
 	private int[] feature = new int[6];
 
-	private String productId;
+	private static String productId;
 
-	private int targetAge;//1010 || 1020 || etc
+	private static int targetAge;//1010 || 1020 || etc
 	
 	public Clothes(){}
 
@@ -48,13 +48,11 @@ public class Clothes{
 	}
 
 	public String getProductId(){
-		
 		return this.productId;
 		
 	}
 
 	public int getTargetAge(){
-	
 		return this.targetAge;
 	}
 	
