@@ -30,6 +30,8 @@ public class CenterPanel extends JPanel{
 			firstCenterPanel_Main(0, 0);
 		else if(flag == 2)
 			secondCenterPanel_Show_ClT(productId, 0,0);
+		else if(flag == 3)
+			thirdCenterPanel(productId, 0,0);
 
 	}
 	public void setPanel(CustomFrame CFrame){
@@ -203,7 +205,8 @@ public class CenterPanel extends JPanel{
                 cltImgIcon = new ImageIcon(cltImg);
                 cltImgLab = new JLabel(cltImgIcon);
 
-		cltInfoLab[0] = new JLabel(""+clt.getTargetAge());	
+		System.out.println(Integer.toString(clt.getTargetAge()));
+		cltInfoLab[0] = new JLabel(Integer.toString(clt.getTargetAge()));	
 		cltInfoLab[0].setBounds(700+x, 150+y, 100, 30);
 
 		int infoListNum = 150;
@@ -232,6 +235,12 @@ public class CenterPanel extends JPanel{
 		for(int i = 1; i< 7; i++){
 			this.add(cltInfoLab[i]);
 		}
+
+	}
+	
+	public void thirdCenterPanel(String productId,int x, int y){
+
+		
 
 	}
 }
