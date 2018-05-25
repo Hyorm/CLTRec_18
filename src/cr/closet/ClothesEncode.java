@@ -26,13 +26,13 @@ public class ClothesEncode{
 			feature[1]=0;break;
 			case "DRESSES":
 			feature[1]=1;break;
-			case "SHIRTS_BLOUSES":
+			case "SHIRTS/BLOUSES":
 			feature[1]=2;break;
 			case "KNITWEAR":
 			feature[1]=3;break;
-			case "T_SHIRTS":
+			case "T-SHIRTS":
 			feature[1]=4;break;
-			case "PANTS_TROUSERS":
+			case "PANTS/TROUSERS":
 			feature[1]=5;break;
 			case "SKIRTS":
 			feature[1]=6;break;
@@ -62,7 +62,7 @@ public class ClothesEncode{
 			feature[2]=1;break;
 			case "CHILDREN":
 			feature[2]=2;break;
-			case "UNI_SEX":
+			case "UNI-SEX":
 			feature[2]=3;break;
 		}
 		switch(color){

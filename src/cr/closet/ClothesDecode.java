@@ -25,13 +25,13 @@ public class ClothesDecode{
 			case 1:
 			clothesInfo[1] = "DRESSES";break;
 			case 2:
-			clothesInfo[1] = "SHIRTS_BLOUSES";break;
+			clothesInfo[1] = "SHIRTS/BLOUSES";break;
 			case 3:
 			clothesInfo[1] = "KNITWEAR";break;
 			case 4:
-			clothesInfo[1] = "T_SHIRTS";break;
+			clothesInfo[1] = "T-SHIRTS";break;
 			case 5:
-			clothesInfo[1] = "PANTS_TROUSERS";break;
+			clothesInfo[1] = "PANTS/TROUSERS";break;
 			case 6:
 			clothesInfo[1] = "SKIRTS";break;
 			case 7:
@@ -71,7 +71,7 @@ public class ClothesDecode{
 			case 2:
 			clothesInfo[2] = "CHILDREN";break;
 			case 3:
-			clothesInfo[2] = "UNI_SEX";break;
+			clothesInfo[2] = "UNI-SEX";break;
 		}
 		switch(feature[3]){
 			case 0:
