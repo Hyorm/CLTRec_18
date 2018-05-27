@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public static class RecentClothes{
+public class RecentClothes{
         public static String[] RecentClothes(){
         String path = "./img/clothes/";
         File dirFile = new File(path);
