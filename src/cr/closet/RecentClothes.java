@@ -28,7 +28,7 @@ public static class RecentClothes{
         index=0;
         for(int i = 0; i<FileName.length;i++){
                 if(FileName[i].contains("jpg")||FileName[i].contains("jpeg")){
-                        RealFileName[index] = FileName[i];
+                        RealFileName[index] = "./img/clothes/"+FileName[i];
                         index++;
                 }
         }
