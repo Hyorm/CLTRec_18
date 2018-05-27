@@ -52,7 +52,7 @@ public class CenterStack{
         }
         else{
             return ArrayForRedo[topForRedo--];
-            }
+        }
     }
 
 
