@@ -269,6 +269,7 @@ public class CenterPanel extends JPanel{
 		col.addElement("Style");
 		col.addElement("Color");
 
+
 		for(int i = 0; i < 50; i++){
 			row = new Vector<String>();
 			row.addElement(i+"img");/*Product Image label*/
