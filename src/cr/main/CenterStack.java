@@ -28,31 +28,31 @@ public class CenterStack{
     public static void stackPush(int flag){
         if(isFull()){
             System.out.println("Stack is full");
-            return 0;
         }else{
             stackArray[++top] = flag;
             topForRedo = -1; //If user puch the flag in stack, top for redo is initialized
         }
+       return 0;
     }
 
     public static int undo() {
         if(isEmpty()){
             System.out.println("Stack is empty");
-            return 0;
         }else{
             ArrayForRedo[++topForRedo] = stackArray[top];
             return stackArray[top--];
         }
+       return 0;
     }
  
     public static int redo(){
         if(RedoEmpty){
             System.out.println("Redo is empty");
-            return 0;
         }
         else{
             return ArrayForRedo[topForRedo--];
         }
+        return 0;
     }
 
 
