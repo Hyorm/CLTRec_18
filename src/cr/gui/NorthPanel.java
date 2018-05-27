@@ -74,7 +74,7 @@ public class NorthPanel extends JPanel{
 					System.out.println("Change");	
 					user = new User(userInfo);
 					CtPane.add(new NorthPanel(CFrame, user, dataCloset));
-					CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, ""));
+					CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, "", ""));
 					System.out.println(user.getUserId());
 					CtPane.add(new WestPanel(CFrame, dataCloset, user));
 					CFrame.repaint();

@@ -61,7 +61,7 @@ public class Main{
                 contentPane = CFrame.getContentPane();
                 contentPane.add(new NorthPanel(CFrame, dataCloset));
                 contentPane.add(new WestPanel(CFrame, dataCloset, user));
-                contentPane.add(new CenterPanel(CFrame, user ,0, dataCloset, ""));
+                contentPane.add(new CenterPanel(CFrame, user ,0, dataCloset, "", ""));
 
 		//Start frame
                 CFrame.size(1300,900);

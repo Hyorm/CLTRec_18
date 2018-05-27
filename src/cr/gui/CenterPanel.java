@@ -8,6 +8,8 @@ import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.*;
+import javax.swing.border.*;
 
 public class CenterPanel extends JPanel{
 
@@ -16,11 +18,9 @@ public class CenterPanel extends JPanel{
 	private Closet dataCloset;
 	private Container CtPane = new Container();
 
-        public CenterPanel(CustomFrame CFrame, User user, int flag, Closet dataCloset, String productId){
+        public CenterPanel(CustomFrame CFrame, User user, int flag, Closet dataCloset, String productId, String manuName){
 		this.dataCloset = dataCloset;
-		if(user == null)
-			this.user = new User();
-		else
+		if(user != null)
 			this.user = user;
 		setPanel(CFrame);
 
@@ -32,6 +32,10 @@ public class CenterPanel extends JPanel{
 			secondCenterPanel_Show_ClT(productId, 0,0);
 		else if(flag == 3)
 			thirdCenterPanel(productId, 0,0);
+		else if(flag == 4){
+			fourthCenterPanel(manuName, 0,0);
+	
+		}
 
 	}
 	public void setPanel(CustomFrame CFrame){
@@ -98,12 +102,15 @@ public class CenterPanel extends JPanel{
 
 			newClothesBtn[i].addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e){
-                                       CtPane.add(new NorthPanel(CFrame, user, dataCloset));
-                                       CtPane.add(new CenterPanel(CFrame,user, 2,dataCloset, "R99999"));
-                                       CtPane.add(new WestPanel(CFrame, dataCloset, user));
-                                       CFrame.repaint();
-                                       CFrame.setContentPane(CtPane);
-                                       CFrame.setVisible(true); 
+					if(user == null)
+                                        	CtPane.add(new NorthPanel(CFrame, dataCloset));
+                                	else
+                                        	CtPane.add(new NorthPanel(CFrame, user,dataCloset));
+                                        CtPane.add(new CenterPanel(CFrame,user, 2,dataCloset, "R99999",""));
+                                        CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                        CFrame.repaint();
+                                        CFrame.setContentPane(CtPane);
+                                        CFrame.setVisible(true); 
 
                                 }
 			});
@@ -242,5 +249,42 @@ public class CenterPanel extends JPanel{
 
 		
 
+	}
+	
+	public void fourthCenterPanel(String manuName, int x, int y){
+
+		Border border = BorderFactory.createEmptyBorder( 0, 0, 0, 0 );
+		JLabel menuNameLab = new JLabel(manuName);
+
+		JTable menuTable;
+		JScrollPane scrollPane;
+		Vector<String> col = new Vector<String>();
+		DefaultTableModel model;
+		Vector<String> row;
+		model = new DefaultTableModel(col, 0);
+		col.addElement("");
+		col.addElement("Product ID");
+		col.addElement("Category");
+		col.addElement("Season");
+		col.addElement("Style");
+		col.addElement("Color");
+
+		for(int i = 0; i < 50; i++){
+			row = new Vector<String>();
+			row.addElement(i+"img");/*Product Image label*/
+			row.addElement("id");/*Product ID label*/
+			row.addElement("cate");/*Product Category label*/
+			row.addElement("sea");/*Product Season label*/
+			row.addElement("sty");/*Product Style label*/
+			row.addElement("col");/*Product Color label*/
+			model.addRow(row);
+		}
+		menuTable = new JTable(model);
+		scrollPane = new JScrollPane(menuTable);
+		menuNameLab.setBounds(100+x, 10+y, 500, 50);
+		scrollPane.setBounds(100+x, 100+y, 900, 550);
+		scrollPane.setBorder(border);
+		this.add(menuNameLab);
+		this.add(scrollPane);
 	}
 }

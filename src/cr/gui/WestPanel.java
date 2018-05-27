@@ -25,8 +25,12 @@ public class WestPanel extends JPanel{
 
 	private CustomFrame CFrame;
 	private Closet dataCloset;
+	
+	private String[] menuNames = {"New Clothes", "Pop Chart","Pop Closets","Genre Clothes","My Closets"};
 
 	private Container CtPane = new Container();
+
+	private JButton[] menu;
 
 	public WestPanel(CustomFrame CFrame,Closet dataCloset, User user){
 
@@ -48,7 +52,6 @@ public class WestPanel extends JPanel{
 		ImageIcon logo;
                 Image logoRe;
                 JButton logoImgBtn;
-                JButton[] menu = new JButton[5];
 
 		logo = new ImageIcon("./img/logo/hanger.png");
                 logoRe = logo.getImage();
@@ -63,7 +66,7 @@ public class WestPanel extends JPanel{
 					CtPane.add(new NorthPanel(CFrame, dataCloset));
 				else
 					CtPane.add(new NorthPanel(CFrame, user,dataCloset));
-				CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, ""));
+				CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, "", ""));
 				CtPane.add(new WestPanel(CFrame,dataCloset, user));
 				CFrame.repaint();
 				CFrame.setContentPane(CtPane);
@@ -80,16 +83,32 @@ public class WestPanel extends JPanel{
 		this.add(logoImgBtn);
 
                 menu = new JButton[5];
-                menu[0] = new JButton("New Clothes");
-                menu[1] = new JButton("Pop Chart");
-                menu[2] = new JButton("Pop Closets");
-                menu[3] = new JButton("Genre Clothes");
-                menu[4] = new JButton("My Closets");
+		
+		for(int i = 0; i < 5; i++)
+			menu[i] = new JButton(menuNames[i]);
 
                 for(int i = 0; i < 5; i++){
                         menu[i].setBorderPainted(false);
                         menu[i].setFocusPainted(false);
-                        this.add(menu[i]);
+			menu[i].addActionListener(new ActionListener(){
+
+        	                public void actionPerformed(ActionEvent e){
+					for(int i=0; i<5; i++)
+						if(menu[i]==e.getSource()){
+							if(user == null)
+			                                        CtPane.add(new NorthPanel(CFrame, dataCloset));
+                        			        else
+								CtPane.add(new NorthPanel(CFrame, user,dataCloset));
+							CtPane.add(new CenterPanel(CFrame,user, 4,dataCloset, "", menuNames[i]));
+							CtPane.add(new WestPanel(CFrame,dataCloset, user));
+							CFrame.repaint();
+                                			CFrame.setContentPane(CtPane);
+                                			CFrame.setVisible(true);
+						}
+				}
+			});
+
+			this.add(menu[i]);
                 }	
 
 	}
