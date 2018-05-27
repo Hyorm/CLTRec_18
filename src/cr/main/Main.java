@@ -56,7 +56,7 @@ public class Main{
 		for(int i = 1; i< dataNum; i++){
 			dataCloset.setClothesMap(new Clothes(Parser.matrix[i]));
 		}
-		
+
                 //Set LayOut
                 contentPane = CFrame.getContentPane();
                 contentPane.add(new NorthPanel(CFrame, dataCloset));

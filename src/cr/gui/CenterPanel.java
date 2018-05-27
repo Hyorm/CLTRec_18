@@ -281,7 +281,6 @@ public class CenterPanel extends JPanel{
 
 			thisCLo = dataCloset.getClothes(productID);
 			clothesIn =  ClothesDecode.clothesDecode(thisCLo.getFeature());
-
 			row[i][0] = cltImgIcon;/*Product Image label*/
 			row[i][1] = productID;/*Product ID label*/
 			row[i][2] = clothesIn[0];/*Product Category label*/

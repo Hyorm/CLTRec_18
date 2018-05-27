@@ -6,10 +6,18 @@ import java.util.*;
 import java.awt.*;
 
 public class ClothesEncode{
-	public static int[] feature = new int[6];
 
 	public static int[] clothesEncode(String type, String category, String gender, String color, String season, String style){
-		
+
+		int[] feature = new int[6];
+
+		type = type.toUpperCase();
+		category = category.toUpperCase();
+		gender = gender.toUpperCase();
+		color = color.toUpperCase();
+		season = season.toUpperCase();
+		style = style.toUpperCase();
+
 		if(type.equals("ACCESSORIES"))
 			feature[0]=0;
 		else if(type.equals("SHOES"))
@@ -125,7 +133,6 @@ public class ClothesEncode{
 			feature[5]=9;
 		else if(style.equals("PREPPY"))
 			feature[5]=10;
-
 		return feature;
 	}
 }
