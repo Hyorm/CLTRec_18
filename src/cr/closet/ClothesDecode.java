@@ -19,7 +19,7 @@ public class ClothesDecode{
 	
 	public static String[] clothesDecode(int[] feature){
 		clothesInfo = new String[6];
-		System.out.println(feature[0]);
+		//System.out.println(feature[0]);
 		switch(feature[1]){
 			case 0:
 			clothesInfo[1] = "OUTERWEAR";break;
