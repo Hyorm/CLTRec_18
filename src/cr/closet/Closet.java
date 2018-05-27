@@ -39,7 +39,7 @@ public class Closet{
 		//TODO:return
 	}
 
-	public Clothes getClothes(int productId){
+	public Clothes getClothes(String productId){
 
 		return this.closet.get(productId);
 	}
@@ -56,7 +56,7 @@ public class Closet{
 
 	}
 
-	public void rmClothes(int productId){
+	public void rmClothes(String productId){
 
 		this.closet.remove(productId);
 
