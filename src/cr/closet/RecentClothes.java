@@ -17,23 +17,23 @@ public class RecentClothes{
         String []FileName = new String[100];
         String []RealFileName = new String[100];
         int index=0;
-for(File tempFile:fileList){
-        if(tempFile.isFile()){
-                String tmepPath = tempFile.getParent();
-                String tempFileName = tempFile.getName();
-                FileName[index]=tempFileName;
-                index++;
+        for(File tempFile:fileList){
+                if(tempFile.isFile()){
+                        String tmepPath = tempFile.getParent();
+                        String tempFileName = tempFile.getName();
+                        FileName[index]=tempFileName;
+                        index++;
+                }
         }
-}
-index=0;
-for(int i = 0; i<FileName.length;i++){
-        if(FileName[i].contains("jpg")||FileName[i].contains("jpeg")){
-                RealFileName[index] = FileName[i];
-                index++;
-}
-}
+        index=0;
+        for(int i = 0; i<FileName.length;i++){
+                if(FileName[i].contains("jpg")||FileName[i].contains("jpeg")){
+                        RealFileName[index] = FileName[i];
+                        index++;
+                }
+        }
 
-return RealFileName;
-}
+        return RealFileName;
+        }
 }
 
