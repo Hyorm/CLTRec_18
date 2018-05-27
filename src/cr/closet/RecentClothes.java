@@ -10,7 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class RecentClothes{
-        public static String[] RecentClothes(){
+        public static String[] recentClothes(){
         String path = "./img/clothes/";
         File dirFile = new File(path);
         File []fileList = dirFile.listFiles();
