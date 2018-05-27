@@ -16,7 +16,6 @@ public class Clothes{
 	public Clothes(){}
 
 	public Clothes(String[] data){
-	
 		this.productId = data[0];
 		this.targetAge = Integer.parseInt(data[1]);
 		this.feature = ClothesEncode.clothesEncode(data[2], data[3], data[4], data[5], data[6], data[7]);

@@ -33,7 +33,7 @@ public class CenterPanel extends JPanel{
 		else if(flag == 3)
 			thirdCenterPanel(productId, 0,0);
 		else if(flag == 4){
-			fourthCenterPanel(manuName, 0,0);
+			fourthCenterPanel(manuName, 0,0, 1);
 	
 		}
 
@@ -251,37 +251,48 @@ public class CenterPanel extends JPanel{
 
 	}
 	
-	public void fourthCenterPanel(String manuName, int x, int y){
+	public void fourthCenterPanel(String manuName, int x, int y, int fourthFlag){
 
 		Border border = BorderFactory.createEmptyBorder( 0, 0, 0, 0 );
 		JLabel menuNameLab = new JLabel(manuName);
 
 		JTable menuTable;
 		JScrollPane scrollPane;
-		Vector<String> col = new Vector<String>();
-		DefaultTableModel model;
-		Vector<String> row;
-		model = new DefaultTableModel(col, 0);
-		col.addElement("");
-		col.addElement("Product ID");
-		col.addElement("Category");
-		col.addElement("Season");
-		col.addElement("Style");
-		col.addElement("Color");
+		String[] col = {"","Product ID","Category","Season","Style","Color"};
+		Object[][] row = new Object[50][6];
+		String[] clothesIn;	
+		String[] closetPIDlist = new String[50];
 
+		if(fourthFlag==1)
+			closetPIDlist = RecentClothes.recentClothes();
 
 		for(int i = 0; i < 50; i++){
-			row = new Vector<String>();
-			row.addElement(i+"img");/*Product Image label*/
-			row.addElement("id");/*Product ID label*/
-			row.addElement("cate");/*Product Category label*/
-			row.addElement("sea");/*Product Season label*/
-			row.addElement("sty");/*Product Style label*/
-			row.addElement("col");/*Product Color label*/
-			model.addRow(row);
+		
+			ImageIcon cltImgIcon;	
+			String productID;
+			Clothes thisCLo = new Clothes();
+			clothesIn = new String[6];
+
+			cltImgIcon = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
+			if(closetPIDlist[i].contains("jpeg"))
+				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-5);
+			else
+				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
+
+			thisCLo = dataCloset.getClothes(productID);
+			clothesIn =  ClothesDecode.clothesDecode(thisCLo.getFeature());
+
+			row[i][0] = cltImgIcon;/*Product Image label*/
+			row[i][1] = productID;/*Product ID label*/
+			row[i][2] = clothesIn[0];/*Product Category label*/
+			row[i][3] = clothesIn[4];/*Product Season label*/
+			row[i][4] = clothesIn[5];/*Product Style label*/
+			row[i][5] = clothesIn[3];/*Product Color label*/
 		}
-		menuTable = new JTable(model);
+
+		menuTable = new JTable(row, col);
 		scrollPane = new JScrollPane(menuTable);
+		menuTable.setRowHeight(100);
 		menuNameLab.setBounds(100+x, 10+y, 500, 50);
 		scrollPane.setBounds(100+x, 100+y, 900, 550);
 		scrollPane.setBorder(border);
