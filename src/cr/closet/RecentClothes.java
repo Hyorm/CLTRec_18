@@ -9,8 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class RecentClothes{
-        public String[] RecentClothes(){
+public static class RecentClothes{
+        public static String[] RecentClothes(){
         String path = "./img/clothes/";
         File dirFile = new File(path);
         File []fileList = dirFile.listFiles();
