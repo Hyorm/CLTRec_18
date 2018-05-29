@@ -46,8 +46,6 @@ public class regGUI extends JFrame implements ActionListener
         c.setLayout(null);    
         c.setBackground(Color.pink);   
 
-        l1 = new JLabel("회원 가입");
-
         l1.setForeground(Color.black);
 
         l1.setFont(new Font("Serif", Font.BOLD, 20));

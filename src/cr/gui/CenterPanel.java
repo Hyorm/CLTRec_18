@@ -31,7 +31,7 @@ public class CenterPanel extends JPanel{
 		else if(flag == 2)
 			secondCenterPanel_Show_ClT(productId, 0,0);
 		else if(flag == 3)
-			thirdCenterPanel(productId, 0,0);
+			thirdCenterPanel(0,0, 1);
 		else if(flag == 4){
 			fourthCenterPanel(manuName, 0,0, 1);
 	
@@ -236,16 +236,30 @@ public class CenterPanel extends JPanel{
 
 	}
 	
-	public void thirdCenterPanel(String productId,int x, int y){
+	public void thirdCenterPanel(int x, int y, int thirdFlag){
 		JLabel recomm = new JLabel("Recommend Clothes");
-		JButton[] rClothesBtn = new JButton[30];
-		ImageIcon[] rClo = new ImageIcon[30];
+		JButton[] rClothesBtn = new JButton[50];
+		ImageIcon[] rClo = new ImageIcon[50];
 		
 		Image reco_img;
 		
-		for(int i = 0; i < 30; i++){
+		String[] closetPIDlist = new String[50];
 
-			rClo[i] = new ImageIcon("./img/clothes/newClothes"+i+".jpg");
+                if(thirdFlag==1)
+                        closetPIDlist = RecentClothes.recentClothes();
+		
+		for(int i = 0; i < 50; i++){
+
+                        String productID;
+                        Clothes thisCLo = new Clothes();
+                        if(closetPIDlist[i].contains("jpeg"))
+                                productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-5);
+                        else
+                                productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
+
+                        thisCLo = dataCloset.getClothes(productID);
+
+			rClo[i] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
 			reco_img = rClo[i].getImage();
 			reco_img = reco_img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			rClo[i] = new ImageIcon(reco_img);
@@ -258,13 +272,18 @@ public class CenterPanel extends JPanel{
 
 			rClothesBtn[i].addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e){
-                                       CtPane.add(new NorthPanel(CFrame, user, dataCloset));
-                                       CtPane.add(new CenterPanel(CFrame,user, 3, dataCloset, productId));
-                                       CtPane.add(new WestPanel(CFrame, dataCloset, user));
-                                       CFrame.repaint();
-                                       CFrame.setContentPane(CtPane);
-                                       CFrame.setVisible(true); 
-
+					for(int i=0; i<50; i++)
+						if(rClothesBtn[i]==e.getSource()){
+                                        	if(user == null)
+                                        	        CtPane.add(new NorthPanel(CFrame, dataCloset));
+                                        	else
+                                        	        CtPane.add(new NorthPanel(CFrame, user,dataCloset));
+						CtPane.add(new CenterPanel(CFrame,user, 2, dataCloset, productID, ""));
+                                        	CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                        	CFrame.repaint();
+                                        	CFrame.setContentPane(CtPane);
+                                        	CFrame.setVisible(true); 
+					}
                                 }
 			});
 

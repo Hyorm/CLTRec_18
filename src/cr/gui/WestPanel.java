@@ -99,7 +99,11 @@ public class WestPanel extends JPanel{
 			                                        CtPane.add(new NorthPanel(CFrame, dataCloset));
                         			        else
 								CtPane.add(new NorthPanel(CFrame, user,dataCloset));
-							CtPane.add(new CenterPanel(CFrame,user, 4,dataCloset, "", menuNames[i]));
+
+							if(i==4)
+								CtPane.add(new CenterPanel(CFrame,user, 3,dataCloset, "", menuNames[i]));
+							else
+								CtPane.add(new CenterPanel(CFrame,user, 4,dataCloset, "", menuNames[i]));
 							CtPane.add(new WestPanel(CFrame,dataCloset, user));
 							CFrame.repaint();
                                 			CFrame.setContentPane(CtPane);
