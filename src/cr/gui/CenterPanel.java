@@ -183,17 +183,9 @@ public class CenterPanel extends JPanel{
 
 		String[] clothesInfo = new String[6];
 		Clothes clt = new Clothes();
+		clt = dataCloset.getClothes(productId);
 		String[] infoList = {"Age","Type","Category","Gender","Color","Season","Style"};
-
-		/*
-		if(this.dataCloset.containsKey(productId))
-			clt = this.dataCloset.getClothes(productId);
 		
-		else{
-			JOptionPane.showMessageDialog(null,"Wrong Access", "No Clothes", JOptionPane.WARNING_MESSAGE);
-			return ;
-		}
-		*/
 		clothesInfo = ClothesDecode.clothesDecode(clt.getFeature());
 		JLabel productIdLab = new JLabel(productId);
 		JLabel[] cltInfoLab = new JLabel[7];
@@ -212,7 +204,6 @@ public class CenterPanel extends JPanel{
                 cltImgIcon = new ImageIcon(cltImg);
                 cltImgLab = new JLabel(cltImgIcon);
 
-		System.out.println(Integer.toString(clt.getTargetAge()));
 		cltInfoLab[0] = new JLabel(Integer.toString(clt.getTargetAge()));	
 		cltInfoLab[0].setBounds(700+x, 150+y, 100, 30);
 
@@ -258,7 +249,7 @@ public class CenterPanel extends JPanel{
 
 		JTable menuTable;
 		JScrollPane scrollPane;
-		String[] col = {"","Product ID","Category","Season","Style","Color"};
+		Object[] col = {"","Product ID","Category","Season","Style","Color"};
 		Object[][] row = new Object[50][6];
 		String[] clothesIn;	
 		String[] closetPIDlist = new String[50];
@@ -272,8 +263,6 @@ public class CenterPanel extends JPanel{
 			String productID;
 			Clothes thisCLo = new Clothes();
 			clothesIn = new String[6];
-
-			cltImgIcon = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
 			if(closetPIDlist[i].contains("jpeg"))
 				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-5);
 			else
@@ -281,7 +270,7 @@ public class CenterPanel extends JPanel{
 
 			thisCLo = dataCloset.getClothes(productID);
 			clothesIn =  ClothesDecode.clothesDecode(thisCLo.getFeature());
-			row[i][0] = cltImgIcon;/*Product Image label*/
+			row[i][0] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);/*Product Image label*/
 			row[i][1] = productID;/*Product ID label*/
 			row[i][2] = clothesIn[0];/*Product Category label*/
 			row[i][3] = clothesIn[4];/*Product Season label*/

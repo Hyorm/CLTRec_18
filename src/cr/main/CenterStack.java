@@ -32,7 +32,6 @@ public class CenterStack{
             stackArray[++top] = flag;
             topForRedo = -1; //If user puch the flag in stack, top for redo is initialized
         }
-       return 0;
     }
 
     public static int undo() {
@@ -46,7 +45,7 @@ public class CenterStack{
     }
  
     public static int redo(){
-        if(RedoEmpty){
+        if(RedoEmpty()){
             System.out.println("Redo is empty");
         }
         else{
