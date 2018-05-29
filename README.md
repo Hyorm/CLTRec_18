@@ -50,15 +50,15 @@ src -- cr ------ main ------- Main.java
 
 </pre>
 
-<b>Ant</b>
+### Ant
    1. ant build
    2. ant clean
    3. ant doc
 
-<b>AppletViewer</b>
-   CLTRec.html
+### AppletViewer
+<br>CLTRec.html
 
-<b>Development Environment</b>
-  java version "10.0.1" 2018-04-17
-  Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)
-  Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)
+### Development Environment
+<br>java version "10.0.1" 2018-04-17
+<br>Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)
+<br>Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)
