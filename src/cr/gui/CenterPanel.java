@@ -342,19 +342,40 @@ public class CenterPanel extends JPanel{
 		Border border = BorderFactory.createEmptyBorder( 0, 0, 0, 0 );
 		JLabel menuNameLab = new JLabel(menuName);
 
-		JTable menuTable;
+		ImageIcon[] rClo = new ImageIcon[50];
+		Image reco_img;
 		JScrollPane scrollPane;
-		Object[] col = {"","Product ID","Category","Season","Style","Color"};
-		Object[][] row = new Object[50][6];
+		JPanel conPane = new JPanel();
+		String[] col = {"Product Image","Product ID","Category","Season","Style","Color"};
+		JLabel[] colLab_0 = new JLabel[50];
+		JLabel[] colLab_3 = new JLabel[50];
+		JLabel[] colLab_4 = new JLabel[50];
+		JLabel[] colLab_5 = new JLabel[50];
 		String[] clothesIn;	
 		String[] closetPIDlist = new String[50];
 		String[] productPath = new String[50];
+		JLabel[] cltLab = new JLabel[50];
+		JButton[] cloBtn = new JButton[50];
+		JLabel[] colLab_Name = new JLabel[6];
+
+		conPane.setLayout(new GridLayout(51,6));
+	
+		for(int i = 0; i < 6; i++){
+			colLab_Name[i] = new JLabel(col[i]);
+			colLab_Name[i].setSize(80, 30);
+			colLab_Name[i].setHorizontalAlignment(JLabel.CENTER);
+			colLab_Name[i].setBounds(100+x+i*147, 60+y, 147, 50);
+			this.add(colLab_Name[i]);
+		}
+		
+	
 		if(fourthFlag==1)
 			closetPIDlist = RecentClothes.recentClothes();
 
+		conPane.setBackground(Color.white);
+
 		for(int i = 0; i < 50; i++){
 		
-			ImageIcon cltImgIcon;	
 			Clothes thisCLo = new Clothes();
 			clothesIn = new String[6];
 			if(closetPIDlist[i].contains("jpeg"))
@@ -363,19 +384,59 @@ public class CenterPanel extends JPanel{
 				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
 			productPath[i] = closetPIDlist[i];
 
+			rClo[i] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
+                        reco_img = rClo[i].getImage();
+                        reco_img = reco_img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                        rClo[i] = new ImageIcon(reco_img); 
+
 			thisCLo = dataCloset.getClothes(productID);
 			clothesIn =  ClothesDecode.clothesDecode(thisCLo.getFeature());
-			row[i][0] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);/*Product Image label*/
-			row[i][1] = productID;/*Product ID label*/
-			row[i][2] = clothesIn[0];/*Product Category label*/
-			row[i][3] = clothesIn[4];/*Product Season label*/
-			row[i][4] = clothesIn[5];/*Product Style label*/
-			row[i][5] = clothesIn[3];/*Product Color label*/
+			cltLab[i] = new JLabel(rClo[i]);/*Product Image label*/
+			cloBtn[i] = new JButton(productID);/*Product ID Btn*/
+			colLab_0[i] = new JLabel(clothesIn[0]);/*Product Category label*/
+			colLab_4[i] = new JLabel(clothesIn[4]);/*Product Season label*/
+			colLab_5[i] = new JLabel(clothesIn[5]);/*Product Style label*/
+			colLab_3[i] = new JLabel(clothesIn[3]);/*Product Color label*/
+
+			cloBtn[i].setContentAreaFilled(false);
+                        cloBtn[i].setBorderPainted(false);
+                        cloBtn[i].setFocusPainted(false);
+
+			cloBtn[i].addActionListener(new ActionListener(){
+                                public void actionPerformed(ActionEvent e){
+                                        for(int i=0; i<50; i++)
+                                                if(cloBtn[i]==e.getSource()){
+                                                        productID = productPath[i];
+                                                }
+                                        if(user == null)
+                                                CtPane.add(new NorthPanel(CFrame, dataCloset));
+                                        else
+                                                CtPane.add(new NorthPanel(CFrame, user,dataCloset));
+                                        CtPane.add(new CenterPanel(CFrame,user, 2, dataCloset, productID, ""));
+                                        CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                        CFrame.repaint();
+                                        CFrame.setContentPane(CtPane);
+                                        CFrame.setVisible(true);
+                               }
+                        });
+
+			cltLab[i].setHorizontalAlignment(JLabel.CENTER);
+			cloBtn[i].setHorizontalAlignment(JLabel.CENTER);
+			colLab_0[i].setHorizontalAlignment(JLabel.CENTER);
+			colLab_4[i].setHorizontalAlignment(JLabel.CENTER);	
+			colLab_5[i].setHorizontalAlignment(JLabel.CENTER);
+			colLab_3[i].setHorizontalAlignment(JLabel.CENTER);
+
+			conPane.add(cltLab[i]);
+			conPane.add(cloBtn[i]);
+			conPane.add(colLab_0[i]);
+			conPane.add(colLab_4[i]);
+			conPane.add(colLab_5[i]);
+			conPane.add(colLab_3[i]);
+			
 		}
 
-		menuTable = new JTable(row, col);
-		scrollPane = new JScrollPane(menuTable);
-		menuTable.setRowHeight(100);
+		scrollPane = new JScrollPane(conPane,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		menuNameLab.setBounds(100+x, 10+y, 500, 50);
 		scrollPane.setBounds(100+x, 100+y, 900, 550);
 		scrollPane.setBorder(border);
