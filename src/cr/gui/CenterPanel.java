@@ -237,7 +237,56 @@ public class CenterPanel extends JPanel{
 	}
 	
 	public void thirdCenterPanel(String productId,int x, int y){
+		JLabel recomm = new JLabel("Recommend Clothes");
+		JButton[] rClothesBtn = new JButton[30];
+		ImageIcon[] rClo = new ImageIcon[30];
+		
+		Image reco_img;
+		
+		for(int i = 0; i < 30; i++){
 
+			rClo[i] = new ImageIcon("./img/clothes/newClothes"+i+".jpg");
+			reco_img = rClo[i].getImage();
+			reco_img = reco_img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			rClo[i] = new ImageIcon(reco_img);
+
+			rClothesBtn[i] = new JButton(rClo[i]);	
+	
+			rClothesBtn[i].setContentAreaFilled(false);
+			rClothesBtn[i].setBorderPainted(false);
+			rClothesBtn[i].setFocusPainted(false);
+
+			rClothesBtn[i].addActionListener(new ActionListener(){
+                                public void actionPerformed(ActionEvent e){
+                                       CtPane.add(new NorthPanel(CFrame, user, dataCloset));
+                                       CtPane.add(new CenterPanel(CFrame,user, 3, dataCloset, productId));
+                                       CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                       CFrame.repaint();
+                                       CFrame.setContentPane(CtPane);
+                                       CFrame.setVisible(true); 
+
+                                }
+			});
+
+		}
+		
+		int pos_x = 100;
+		int pos_y = 100;
+
+		for(int i = 0; i < 30; i++){
+	
+			rClothesBtn[i].setBounds(pos_x+x, pos_y+y, 100, 100);
+
+			pos_x += 150;
+			if(i % 6 == 0) {
+				pos_y += 150;
+				pos_x = 100;
+			}
+		}
+		
+		for(int i = 0; i < 6; i++){
+			this.add(rClothesBtn[i]);
+		}
 		
 
 	}
