@@ -30,6 +30,7 @@
 
 	<target name="clean">
 		<delete dir="${build}"/>
+		<delete file="img/clothes/.DS_Store"/>
 	</target>
 </project>
 
