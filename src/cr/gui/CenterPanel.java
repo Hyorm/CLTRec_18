@@ -1,6 +1,6 @@
-package cr.main;
+package cr.gui;
   
-import cr.gui.*;
+import cr.algorithm.*;
 import cr.usr.*;
 import cr.closet.*;
 
@@ -13,12 +13,19 @@ import javax.swing.border.*;
 
 public class CenterPanel extends JPanel{
 
+	private Font myFont1 = new Font("arial", Font.PLAIN, 30);
 	private CustomFrame CFrame;
 	private User user;
 	private Closet dataCloset;
 	private Container CtPane = new Container();
 	private String[] closetPIDlist = RecentClothes.recentClothes();;
 	private String productID = "";
+	private int keyFlag=1;
+	private int closetFlag=0;
+	public static String fetureN = "";
+	public static String keywordName = "";
+	private String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
+
         public CenterPanel(CustomFrame CFrame, User user, int flag, Closet dataCloset, String productId, String menuName){
 		this.dataCloset = dataCloset;
 		if(user != null)
@@ -33,10 +40,12 @@ public class CenterPanel extends JPanel{
 			secondCenterPanel_Show_ClT(productId, 0,0);
 		else if(flag == 3)
 			thirdCenterPanel(menuName, 0,0, 1);
-		else if(flag == 4){
+		else if(flag == 4)
 			fourthCenterPanel(menuName, 0,0, 1);
+		else if(flag ==5)
+			fourthCenterPanel(menuName, 0,0, 2);
 	
-		}
+		
 
 	}
 	public void setPanel(CustomFrame CFrame){
@@ -54,12 +63,13 @@ public class CenterPanel extends JPanel{
 	
 	public void firstCenterPanel_Main(int x, int y){
 		
-		String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
-
-		JLabel recoClosetLab = new JLabel("Today's Pick");
+		JLabel recoClosetLab = new JLabel("Today's Pick");		
+		recoClosetLab.setFont(myFont1);
 		JLabel newClothesLab = new JLabel("New Clothes");
+		newClothesLab.setFont(myFont1);
 		JLabel keyWordLab = new JLabel("Pop KeyWord");
-
+		keyWordLab.setFont(myFont1);
+	
 		JButton[] recoClosetSetBtn = new JButton[2];
 		JButton[] newClothesBtn = new JButton[6];
 		JButton[] KeyWordBtn = new JButton[11];
@@ -132,8 +142,21 @@ public class CenterPanel extends JPanel{
 
 			KeyWordBtn[i].addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e){
-                                        //Logout or Set Circumstance
-
+                                        for(int i=0; i<11; i++){
+						if(KeyWordBtn[i]==e.getSource()){
+						 	keywordName= keyword[i];
+							fetureN = "Style";
+						}
+					}
+					if(user == null)
+                                                CtPane.add(new NorthPanel(CFrame, dataCloset));
+                                        else
+                                                CtPane.add(new NorthPanel(CFrame, user,dataCloset));
+                                        CtPane.add(new CenterPanel(CFrame,user, 5, dataCloset, "", "Genre Clothes"));
+                                        CtPane.add(new WestPanel(CFrame, dataCloset, user));
+                                        CFrame.repaint();
+                                        CFrame.setContentPane(CtPane);
+                                        CFrame.setVisible(true);
                                 }
                         });
 
@@ -367,10 +390,12 @@ public class CenterPanel extends JPanel{
 			colLab_Name[i].setBounds(100+x+i*147, 60+y, 147, 50);
 			this.add(colLab_Name[i]);
 		}
-		
+		System.out.println(keywordName);		
 	
 		if(fourthFlag==1)
 			closetPIDlist = RecentClothes.recentClothes();
+		else if(fourthFlag == 2)
+			closetPIDlist = SortClothes.sortClothes(keyFlag, closetFlag, fetureN, keywordName);
 
 		conPane.setBackground(Color.white);
 
@@ -380,15 +405,17 @@ public class CenterPanel extends JPanel{
 			clothesIn = new String[6];
 			if(closetPIDlist[i].contains("jpeg"))
 				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-5);
-			else
+			else if(closetPIDlist[i].contains("jpg"))
 				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
-			productPath[i] = closetPIDlist[i];
+			else
+				productID = closetPIDlist[i];
 
+			productPath[i] = closetPIDlist[i];
 			rClo[i] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
                         reco_img = rClo[i].getImage();
                         reco_img = reco_img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                         rClo[i] = new ImageIcon(reco_img); 
-
+			
 			thisCLo = dataCloset.getClothes(productID);
 			clothesIn =  ClothesDecode.clothesDecode(thisCLo.getFeature());
 			cltLab[i] = new JLabel(rClo[i]);/*Product Image label*/
@@ -414,7 +441,7 @@ public class CenterPanel extends JPanel{
                                                 CtPane.add(new NorthPanel(CFrame, user,dataCloset));
                                         CtPane.add(new CenterPanel(CFrame,user, 2, dataCloset, productID, ""));
                                         CtPane.add(new WestPanel(CFrame, dataCloset, user));
-                                        CFrame.repaint();
+                                        CFrame.repaint(); 
                                         CFrame.setContentPane(CtPane);
                                         CFrame.setVisible(true);
                                }

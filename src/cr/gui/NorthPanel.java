@@ -1,6 +1,6 @@
-package cr.main;
+package cr.gui;
 
-import cr.gui.*;
+import cr.main.*;
 import cr.usr.*;
 import cr.closet.*;
 
@@ -98,7 +98,6 @@ public class NorthPanel extends JPanel{
 
 		this.dataCloset = dataCloset;
 		this.user = user;
-		System.out.println("North");
 		this.CFrame = CFrame;
 		this.setLayout(null);
                 Random rd = new Random();
@@ -144,8 +143,7 @@ public class NorthPanel extends JPanel{
 		addClothesBtn.addActionListener(new ActionListener(){
 
                         public void actionPerformed(ActionEvent e){
-                                        System.out.println("addClothes");
-
+				new InputClothes(user);
                         }
                 });		
 		

@@ -1,6 +1,6 @@
-package cr.main;
+package cr.gui;
 
-import cr.gui.*;
+import cr.main.*;
 import cr.usr.*;
 import cr.closet.*;
 
