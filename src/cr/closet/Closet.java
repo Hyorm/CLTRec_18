@@ -74,4 +74,11 @@ public class Closet{
 		this.closet.clear();
 		
 	}
+	
+	public Set<String> getKeySet(){
+	
+		Set<String> keySet = closet.keySet();
+		
+		return keySet;
+	}
 }
