@@ -33,6 +33,8 @@ src -- cr ------ main ------- Main.java
              |            --- Circumstance.java
              |
               -- algorithm -- Recommender.java
+             |           |
+             |            --- SortClothes.java
              |            
               -- gui -------- CustomFrame.java
                          |
