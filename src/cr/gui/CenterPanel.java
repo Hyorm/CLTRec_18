@@ -18,7 +18,6 @@ public class CenterPanel extends JPanel{
 	private User user;
 	private Closet dataCloset;
 	private Container CtPane = new Container();
-	private String[] closetPIDlist = RecentClothes.recentClothes();;
 	private String productID = "";
 	private int keyFlag=1;
 	private int closetFlag=0;
@@ -62,6 +61,9 @@ public class CenterPanel extends JPanel{
 	}
 	
 	public void firstCenterPanel_Main(int x, int y){
+
+		StrategyBoard sb = new StrategyBoard("", new ConcreteStrategyBoard_Grid(), new ConcreteStrategyData_Recent());
+		String[] closetPIDlist = sb.setBoardData(keyFlag, closetFlag, fetureN, keywordName);
 		
 		JLabel recoClosetLab = new JLabel("Today's Pick");		
 		recoClosetLab.setFont(myFont1);
@@ -218,8 +220,10 @@ public class CenterPanel extends JPanel{
 
 		if(productPath.contains("jpeg"))
                 	productId = productPath.substring(0, productPath.length()-5);
-                else
-      	                productId = productPath.substring(0, productPath.length()-4);
+		else if(productPath.contains("jpg"))
+			productId = productPath.substring(0, productPath.length()-4);
+		else
+			productId = productPath;
 
 		clt = dataCloset.getClothes(productId);
 	
