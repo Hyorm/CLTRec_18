@@ -14,7 +14,7 @@ import javax.swing.border.*;
 public class CenterPanel extends JPanel{
 
 	private Font myFont1 = new Font("arial", Font.PLAIN, 30);
-	private CustomFrame CFrame;
+	public static CustomFrame CFrame;
 	private User user;
 	private Closet dataCloset;
 	private Container CtPane = new Container();

@@ -16,7 +16,11 @@ public class ConcreteStrategyData_Recent implements ConcreteStrategyData{
 
 	public String[] setBoardData(int flag, int closetFlag, String fetureN, String keyword){
 		
-		return RecentClothes.recentClothes();
+		GenericRecommend gr = new ConcreteNew(new ConcreteStrategyCloset_dataCloset());
+
+		gr.setCloset();
+
+		return gr.getPathImagList();
 
 	}
 }

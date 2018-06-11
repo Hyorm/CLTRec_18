@@ -16,7 +16,11 @@ public class ConcreteStrategyData_Style implements ConcreteStrategyData{
 
         public String[] setBoardData(int flag, int closetFlag, String fetureN, String keyword){
 	
-		return SortClothes.sortClothes(flag, closetFlag, fetureN, keyword);
+		GenericRecommend gr = new ConcreteType(new ConcreteStrategyCloset_dataCloset());
+
+                gr.setCloset();
+
+		return gr.makeRecommendProductID();
 
 	}
 
