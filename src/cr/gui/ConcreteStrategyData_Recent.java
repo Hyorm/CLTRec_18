@@ -14,7 +14,7 @@ import javax.swing.border.*;
 
 public class ConcreteStrategyData_Recent implements ConcreteStrategyData{
 
-	public String[] setBoardData(int flag, int closetFlag, String fetureN, String keyword){
+	public String[] setBoardData(){
 		
 		GenericRecommend gr = new ConcreteNew(new ConcreteStrategyCloset_dataCloset());
 

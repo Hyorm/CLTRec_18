@@ -59,9 +59,9 @@ public class Main{
 
                 //Set LayOut
                 contentPane = CFrame.getContentPane();
-                contentPane.add(new NorthPanel(CFrame, dataCloset));
-                contentPane.add(new WestPanel(CFrame, dataCloset, user));
-                contentPane.add(new CenterPanel(CFrame, user ,0, dataCloset, "", ""));
+                contentPane.add(new NorthPanel());
+                contentPane.add(new WestPanel());
+                contentPane.add(new CenterPanel(0, "", ""));
 
 		//Start frame
                 CFrame.size(1300,900);

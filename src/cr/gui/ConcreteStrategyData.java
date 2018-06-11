@@ -13,6 +13,6 @@ import javax.swing.border.*;
 
 public interface ConcreteStrategyData{
 
-	public String[] setBoardData(int flag, int closetFlag, String fetureN, String keyword);
+	public String[] setBoardData();
 
 }

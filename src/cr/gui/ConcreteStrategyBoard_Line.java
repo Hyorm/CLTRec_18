@@ -85,16 +85,13 @@ public class ConcreteStrategyBoard_Line implements ConcreteStrategyBoard{
                                         for(int i=0; i<50; i++)
                                                 if(cloBtn[i]==e.getSource()){
                                                         productID = productPath[i];
-                                                }
-                                        if(Main.user == null)
-                                                CtPane.add(new NorthPanel(CenterPanel.CFrame, Main.dataCloset));
-                                        else
-                                                CtPane.add(new NorthPanel(CenterPanel.CFrame, Main.user,Main.dataCloset));
-                                        CtPane.add(new CenterPanel(CenterPanel.CFrame,Main.user, 2, Main.dataCloset, productID, ""));
-                                        CtPane.add(new WestPanel(CenterPanel.CFrame, Main.dataCloset, Main.user));
-                                        CenterPanel.CFrame.repaint(); 
-                                        CenterPanel.CFrame.setContentPane(CtPane);
-                                        CenterPanel.CFrame.setVisible(true);
+                                        }
+                                        CtPane.add(new NorthPanel());
+                                        CtPane.add(new CenterPanel( 2,  productID, ""));
+                                        CtPane.add(new WestPanel());
+                                        Main.CFrame.repaint(); 
+                                        Main.CFrame.setContentPane(CtPane);
+                                        Main.CFrame.setVisible(true);
                                }
                         });
 

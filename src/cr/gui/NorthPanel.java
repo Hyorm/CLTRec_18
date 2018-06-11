@@ -11,7 +11,6 @@ import javax.swing.*;
 
 public class NorthPanel extends JPanel{
 	
-	public static User user;
 	private JTextField searchText ;
 
 	private ImageIcon userProfile;
@@ -23,20 +22,24 @@ public class NorthPanel extends JPanel{
 	private JButton myPageBtn;
 	private JButton addClothesBtn;
 
-	private CustomFrame CFrame;
+	private Container CtPane = new Container();	
 
-	private Container CtPane = new Container();
-	
-	private Closet dataCloset;
-
-	public NorthPanel(CustomFrame CFrame,Closet dataCloset){
-
-		this.dataCloset = dataCloset;
+	public NorthPanel(){
 
 		String[] noUser = {"default","default","nil", "nil", "1234"};
 
-		this.user = new User(noUser);
-		this.CFrame = CFrame;
+		if(Main.user==null || Main.user.getUserId().equals("default")){
+			Main.user = new User(noUser);
+			setNorthNoUser();
+		
+		}
+		else
+			setNorth();
+
+		
+	}
+
+	public void setNorthNoUser(){
 
 		this.setLayout(null);
 		this.setBounds(0,0,1300,80);
@@ -49,7 +52,7 @@ public class NorthPanel extends JPanel{
 		searchText = new JTextField(10);
 
                 //User Page Icon --> Use User Id img
-                userProfile = new ImageIcon("./img/userImage/"+this.user.getUserId()+".png");
+                userProfile = new ImageIcon("./img/userImage/"+Main.user.getUserId()+".png");
                 userImage = userProfile.getImage();
                 userImage = userImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
                 userProfile = new ImageIcon(userImage);
@@ -66,20 +69,20 @@ public class NorthPanel extends JPanel{
                 		int userAttNum = 5;
                 		String[] userInfo = new String[userAttNum];
 
-				LogGUI logGUI = new LogGUI(user);
+				LogGUI logGUI = new LogGUI(Main.user);
 
 				userInfo = logGUI.getUserInfo();
 				
                 		if(userInfo[0].equals("nil")==false){
 					System.out.println("Change");	
-					user = new User(userInfo);
-					CtPane.add(new NorthPanel(CFrame, user, dataCloset));
-					CtPane.add(new CenterPanel(CFrame,user, 1,dataCloset, "", ""));
-					System.out.println(user.getUserId());
-					CtPane.add(new WestPanel(CFrame, dataCloset, user));
-					CFrame.repaint();
-					CFrame.setContentPane(CtPane);
-					CFrame.setVisible(true);
+					Main.user = new User(userInfo);
+					CtPane.add(new NorthPanel());
+					CtPane.add(new CenterPanel( 1, "", ""));
+					System.out.println(Main.user.getUserId());
+					CtPane.add(new WestPanel());
+					Main.CFrame.repaint();
+					Main.CFrame.setContentPane(CtPane);
+					Main.CFrame.setVisible(true);
 					
 					
 				}
@@ -94,11 +97,8 @@ public class NorthPanel extends JPanel{
 
 	}
 
-	public NorthPanel(CustomFrame CFrame, User user, Closet dataCloset){
+	public void setNorth(){
 
-		this.dataCloset = dataCloset;
-		this.user = user;
-		this.CFrame = CFrame;
 		this.setLayout(null);
                 Random rd = new Random();
 		this.setBounds(0,0,1440,80);
@@ -110,7 +110,7 @@ public class NorthPanel extends JPanel{
 		searchText = new JTextField(10);
 
                 //User Page Icon --> Use User Id img
-                userProfile = new ImageIcon("./img/userImage/"+this.user.getUserId()+".png");
+                userProfile = new ImageIcon("./img/userImage/"+Main.user.getUserId()+".png");
                 userImage = userProfile.getImage();
                 userImage = userImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
                 userProfile = new ImageIcon(userImage);
@@ -143,7 +143,7 @@ public class NorthPanel extends JPanel{
 		addClothesBtn.addActionListener(new ActionListener(){
 
                         public void actionPerformed(ActionEvent e){
-				new InputClothes(user);
+				new InputClothes(Main.user);
                         }
                 });		
 		

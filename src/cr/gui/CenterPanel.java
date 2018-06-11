@@ -3,6 +3,7 @@ package cr.gui;
 import cr.algorithm.*;
 import cr.usr.*;
 import cr.closet.*;
+import cr.main.*;
 
 import java.awt.*;
 import java.util.*;
@@ -14,9 +15,6 @@ import javax.swing.border.*;
 public class CenterPanel extends JPanel{
 
 	private Font myFont1 = new Font("arial", Font.PLAIN, 30);
-	public static CustomFrame CFrame;
-	private User user;
-	private Closet dataCloset;
 	private Container CtPane = new Container();
 	private String productID = "";
 	private int keyFlag=1;
@@ -25,11 +23,8 @@ public class CenterPanel extends JPanel{
 	public static String keywordName = "";
 	private String[] keyword = {"Street", "Formal", "Vintage", "Bohemian", "Chic", "Artsy", "Casual", "Sophisticated", "Tomboy", "Rocker", "Preppy"};
 
-        public CenterPanel(CustomFrame CFrame, User user, int flag, Closet dataCloset, String productId, String menuName){
-		this.dataCloset = dataCloset;
-		if(user != null)
-			this.user = user;
-		setPanel(CFrame);
+        public CenterPanel(int flag, String productId, String menuName){
+		setPanel();
 
 		if(flag == 0)
 			firstCenterPanel_Main(200, 80);
@@ -47,8 +42,7 @@ public class CenterPanel extends JPanel{
 		
 
 	}
-	public void setPanel(CustomFrame CFrame){
-		this.CFrame = CFrame;
+	public void setPanel(){
                 this.setLayout(null);
                 this.setBounds(200,80,1100,820);
 
@@ -63,7 +57,7 @@ public class CenterPanel extends JPanel{
 	public void firstCenterPanel_Main(int x, int y){
 
 		StrategyBoard sb = new StrategyBoard("", new ConcreteStrategyBoard_Grid(), new ConcreteStrategyData_Recent());
-		String[] closetPIDlist = sb.setBoardData(keyFlag, closetFlag, fetureN, keywordName);
+		String[] closetPIDlist = sb.setBoardData();
 		
 		JLabel recoClosetLab = new JLabel("Today's Pick");		
 		recoClosetLab.setFont(myFont1);
@@ -121,15 +115,12 @@ public class CenterPanel extends JPanel{
                                                 if(newClothesBtn[i]==e.getSource()){
                                                         productID = closetPIDlist[i];
                                                 }
-                                        if(user == null)
-                                                CtPane.add(new NorthPanel(CFrame, dataCloset));
-                                        else
-                                                CtPane.add(new NorthPanel(CFrame, user,dataCloset));
-                                        CtPane.add(new CenterPanel(CFrame,user, 2, dataCloset, productID, ""));
-                                        CtPane.add(new WestPanel(CFrame, dataCloset, user));
-                                        CFrame.repaint();
-                                        CFrame.setContentPane(CtPane);
-                                        CFrame.setVisible(true);
+                                        CtPane.add(new NorthPanel());
+                                        CtPane.add(new CenterPanel( 2, productID, ""));
+                                        CtPane.add(new WestPanel());
+                                        Main.CFrame.repaint();
+                                        Main.CFrame.setContentPane(CtPane);
+                                        Main.CFrame.setVisible(true);
 				}
                       
 			});
@@ -150,15 +141,12 @@ public class CenterPanel extends JPanel{
 							fetureN = "Style";
 						}
 					}
-					if(user == null)
-                                                CtPane.add(new NorthPanel(CFrame, dataCloset));
-                                        else
-                                                CtPane.add(new NorthPanel(CFrame, user,dataCloset));
-                                        CtPane.add(new CenterPanel(CFrame,user, 5, dataCloset, "", "Genre Clothes"));
-                                        CtPane.add(new WestPanel(CFrame, dataCloset, user));
-                                        CFrame.repaint();
-                                        CFrame.setContentPane(CtPane);
-                                        CFrame.setVisible(true);
+                                        CtPane.add(new NorthPanel());
+                                        CtPane.add(new CenterPanel( 5, "", "Genre Clothes"));
+                                        CtPane.add(new WestPanel());
+                                        Main.CFrame.repaint();
+                                        Main.CFrame.setContentPane(CtPane);
+                                        Main.CFrame.setVisible(true);
                                 }
                         });
 
@@ -225,7 +213,7 @@ public class CenterPanel extends JPanel{
 		else
 			productId = productPath;
 
-		clt = dataCloset.getClothes(productId);
+		clt = Main.dataCloset.getClothes(productId);
 	
 		clothesInfo = ClothesDecode.clothesDecode(clt.getFeature());
 		
@@ -283,7 +271,7 @@ public class CenterPanel extends JPanel{
 		StrategyBoard sb = new StrategyBoard(menuName, new ConcreteStrategyBoard_Grid(), new ConcreteStrategyData_Recent());
 
                 JLabel menuNameLab = sb.getMenuNameLab();
-		String[] closetPIDlist = sb.setBoardData(keyFlag, closetFlag, fetureN, keywordName);
+		String[] closetPIDlist = sb.setBoardData();
 		JScrollPane scrollPane = sb.getDisplayBoard(closetPIDlist,x,y);
 
                 menuNameLab.setBounds(100+x, 10+y, 500, 50);	
@@ -303,7 +291,7 @@ public class CenterPanel extends JPanel{
 			sb = new StrategyBoard(menuName, new ConcreteStrategyBoard_Line(), new ConcreteStrategyData_Style());
 
 		JLabel menuNameLab = sb.getMenuNameLab();
-                String[] closetPIDlist = sb.setBoardData(keyFlag, closetFlag, fetureN, keywordName);
+                String[] closetPIDlist = sb.setBoardData();
                 JScrollPane scrollPane = sb.getDisplayBoard(closetPIDlist, x, y);
 		
 		menuNameLab.setBounds(100+x, 10+y, 500, 50);

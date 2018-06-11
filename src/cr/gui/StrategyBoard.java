@@ -37,9 +37,9 @@ public class StrategyBoard{
 
 	}
 
-	public String[] setBoardData(int flag, int closetFlag, String fetureN, String keyword){
+	public String[] setBoardData(){
 
-		this.closetPIDlist = data.setBoardData(flag, closetFlag, fetureN, keyword);
+		this.closetPIDlist = data.setBoardData();
 		
 		return closetPIDlist;
 	}
