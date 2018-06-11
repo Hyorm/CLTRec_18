@@ -40,8 +40,10 @@ public class ConcreteStrategyBoard_Grid implements ConcreteStrategyBoard{
 
 			if(closetPIDlist[i].contains("jpeg"))
                                 productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-5);
-                        else
-                                productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
+                        else if(closetPIDlist[i].contains("jpg"))
+				productID = closetPIDlist[i].substring(0, closetPIDlist[i].length()-4);
+			else
+				productID = closetPIDlist[i];
 
 			thisCLo = Main.dataCloset.getClothes(productID);
 			rClo[i] = new ImageIcon("./img/clothes/"+closetPIDlist[i]);
