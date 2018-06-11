@@ -23,7 +23,7 @@ import javax.swing.*;
 public class Main{
 
 		//Singlton User
-		static private User user;
+		static public User user;
 
 		//FrameLayout
 		static public CustomFrame CFrame = new CustomFrame("CLTRec_Beta");
