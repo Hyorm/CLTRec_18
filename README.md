@@ -81,7 +81,7 @@ Divide users for make more easily management the system and View with Swing
 #### 1,2 iteration에서 구현한 기능
 - main page
 - 각 page에 맞는 panel생성 --- Factory pattern
-- user login
+- user login --- Singletone pattern
 - 의상 보여주기
 - Closet
 - Clothes(codec 포함)
@@ -99,7 +99,7 @@ Divide users for make more easily management the system and View with Swing
 - Recommend Closet page
 - Register -- gui
 
-- 알고리즘
+- 알고리즘 --- Strategy pattern<br>
 //랜덤 추천 에러 수정
 - closet추천과 clothes 추천으로 분리
 - 사용자 응답(OpenSource) 추천 알고리즘(ex. market basket)
