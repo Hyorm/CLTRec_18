@@ -1,6 +1,10 @@
 package cr.closet;
   
-import cr.*;
+import cr.algorithm.*;
+import cr.usr.*;
+import cr.file.*;
+import cr.gui.*;
+import cr.main.*;
 
 import java.awt.*;
 import java.util.*;
