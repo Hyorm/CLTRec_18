@@ -123,5 +123,5 @@ Divide users for make more easily management the system and View with Swing
 <br>Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)
 
 ### Code Contribution
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/28642467/120491573-4f9c1e00-c3f4-11eb-9050-da3ecbfd635a.png">
+<img width="844" alt="image" src="https://user-images.githubusercontent.com/28642467/133016225-1d49e9cc-3371-469e-aecc-723b9c9a1a1a.png">
 
