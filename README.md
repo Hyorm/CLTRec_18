@@ -121,7 +121,3 @@ Divide users for make more easily management the system and View with Swing
 <br>java version "10.0.1" 2018-04-17
 <br>Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)
 <br>Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)
-
-### Code Contribution
-<img width="844" alt="image" src="https://user-images.githubusercontent.com/28642467/133016225-1d49e9cc-3371-469e-aecc-723b9c9a1a1a.png">
-
